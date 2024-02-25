@@ -11,3 +11,8 @@ $ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 ```
 
 Once packer has been installed for the first time, it will manage itself as any other packer plugin.
+
+Start neovim and install plugins:
+```bash
+:PackerSync
+```
