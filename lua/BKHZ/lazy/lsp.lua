@@ -9,12 +9,13 @@ return {
 	},
 
 	config = function()
-		local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
-		local default_setup = function(server)
-			require("lspconfig")[server].setup({
-				capabilities = lsp_capabilities,
-			})
-		end
+		local cmp = require("cmp")
+		local cmp_lsp = require("cmp_nvim_lsp")
+		local capabilities = vim.tbl_deep_extend(
+			"force",
+			{},
+			vim.lsp.protocol.make_client_capabilities(),
+			cmp_lsp.default_capabilities())
 
 		require("mason").setup {
 			max_concurrent_installers = 4,
@@ -35,22 +36,57 @@ return {
 				"yamlls",
 				"lua_ls",
 			},
+
 			handlers = {
-				default_setup,
+				-- Default LSP server handler
+				function(server)
+					require("lspconfig")[server].setup {
+						capabilities = capabilities
+					}
+				end,
+
+				["lua_ls"] = function()
+					local lspconfig = require("lspconfig")
+					lspconfig.lua_ls.setup {
+						capabilities = capabilities,
+						settings = {
+							Lua = {
+								diagnostics = {
+									globals = { "vim", "it", "describe", "before_each", "after_each" }
+								}
+							}
+						}
+					}
+				end,
 			}
 		}
 
-		local cmp = require("cmp")
 		cmp.setup {
-			sources = {
+			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
-			},
+			}, {
+				{ name = "buffer" },
+			}),
+
+			-- Autocompletion key mappings
 			mapping = cmp.mapping.preset.insert({
 				-- Enter key confirms completion item
 				["<CR>"] = cmp.mapping.confirm({select = false}),
 				-- Ctrl + space triggers completion menu
 				["<C-Space>"] = cmp.mapping.complete(),
 			})
+		}
+
+		-- Diagnostics styling
+		vim.diagnostic.config {
+			float = {
+				focusable = false,
+				style = "minimal",
+				border = "rounded",
+				source = "always",
+				header = "",
+				prefix = "",
+			}
 		}
 	end
 }
