@@ -23,15 +23,15 @@ return require("packer").startup(function(use)
 		end
 	}
 
-    -- Git magic
+	-- Git magic
 	use("tpope/vim-fugitive")
 
 	-- LSP plugins
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
 	use("neovim/nvim-lspconfig")
-    use("hrsh7th/nvim-cmp")
-    use("hrsh7th/cmp-nvim-lsp")
+	use("hrsh7th/nvim-cmp")
+	use("hrsh7th/cmp-nvim-lsp")
 
 	-- Git gutter symbols
 	use("airblade/vim-gitgutter")

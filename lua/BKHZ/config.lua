@@ -9,32 +9,32 @@ local config = {
 	updatetime = 1000,
 	-- Enable GUI colors
 	termguicolors = true,
-    -- Disable backup files
-    backup = false,
-    writebackup = false,
-    guicursor = "",
-    -- Relative line numbering
+	-- Disable backup files
+	backup = false,
+	writebackup = false,
+	guicursor = "",
+	-- Relative line numbering
 	number = true,
-    relativenumber = true,
-    -- Tab settings
-    tabstop = 4,
-    softtabstop = 4,
-    shiftwidth = 4,
+	relativenumber = true,
+	-- Tab settings
+	tabstop = 4,
+	softtabstop = 4,
+	shiftwidth = 4,
 	-- Ignore case sensitivity in search
 	ignorecase = true,
-    -- Do not convert tabs to spaces
-    expandtab = false,
-    smartindent = true,
-    hlsearch = true,
-    incsearch = true,
-    scrolloff = 8,
+	-- Do not convert tabs to spaces
+	expandtab = false,
+	smartindent = true,
+	hlsearch = true,
+	incsearch = true,
+	scrolloff = 8,
 	sidescrolloff = 8,
 	-- Always show the sign columns to avoid unnecessary text movement
-    signcolumn = "yes",
-    -- Rulers
-    colorcolumn = "120",
-    -- Highlight current line
-    cursorline = true,
+	signcolumn = "yes",
+	-- Rulers
+	colorcolumn = "120",
+	-- Highlight current line
+	cursorline = true,
 	-- Set number column width
 	numberwidth = 4,
 	-- Disable modeline
@@ -48,7 +48,7 @@ local config = {
 }
 
 for k, v in pairs(config) do
-    vim.opt[k] = v
+	vim.opt[k] = v
 end
 
 -- Hide intro screen
