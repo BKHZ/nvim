@@ -7,14 +7,14 @@ return {
 				transparent = true,
 				terminal_colors = true,
 				styles = {
-					comments = { italic = false },
+					comments = { italic = true },
 					keywords = { italic = false },
 					sidebars = "dark",
 					floats = "dark"
 				}
 			}
 
-			vim.cmd("colorscheme tokyonight")
+			vim.cmd("colorscheme tokyonight-storm")
 		end
 	},
 }
