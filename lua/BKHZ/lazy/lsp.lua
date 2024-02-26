@@ -6,6 +6,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		"hrsh7th/nvim-cmp",
 		"hrsh7th/cmp-nvim-lsp",
+		"folke/neodev.nvim",
 	},
 
 	config = function()
@@ -22,6 +23,11 @@ return {
 			ui = {
 				check_outdated_packages_on_open = true
 			}
+		}
+
+		-- Neodev setup must be before lspconfig
+		require("neodev").setup {
+			lspconfig = true,
 		}
 
 		require("mason-lspconfig").setup {
