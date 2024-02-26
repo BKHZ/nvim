@@ -1,10 +1,3 @@
 # Neovimrc
 
-## Setup
-
-### Packer
-
-Start neovim and install plugins:
-```bash
-:PackerSync
-```
+Clone the repository under `~/.config/nvim` and launch neovim. It's that simple!
