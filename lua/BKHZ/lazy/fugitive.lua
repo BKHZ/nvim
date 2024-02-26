@@ -14,7 +14,7 @@ return {
 				return
 			end
 
-			local opts = { buffer = vim.api.nvim_get_current_buf(), remap = false }
+			local opts = { buffer = vim.api.nvim_get_current_buf(), remap = false, silent = true }
 			vim.keymap.set("n", "<leader>P", function()
 				vim.cmd.Git("push")
 			end, opts)
