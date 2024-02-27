@@ -21,10 +21,16 @@ return {
 
 		vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
 		vim.keymap.set("n", "<C-p>", builtin.git_files, {})
+
+		-- General search
 		vim.keymap.set("n", "<leader>ps", function()
 			builtin.grep_string({ search = vim.fn.input("grep > ") });
 		end)
 
+		-- Ripgrep live search
+		vim.keymap.set("n", "<leader>F", builtin.live_grep, {})
+
+		-- List buffers
 		vim.keymap.set("n", "<leader>b", builtin.buffers, {})
 	end
 }
