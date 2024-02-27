@@ -3,8 +3,8 @@ return {
 	config = function()
 		require("fidget").setup {
 			progress = {
-				ignore_done_already = true,
-				ignore_empty_message = true,
+				ignore_done_already = false,
+				ignore_empty_message = false,
 				display = {
 					progress_icon = {
 						pattern = "dots",

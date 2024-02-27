@@ -24,6 +24,7 @@ local config = {
 	ignorecase = true,
 	-- Do not convert tabs to spaces
 	expandtab = false,
+	-- Try to do smart indentation
 	smartindent = true,
 	hlsearch = true,
 	incsearch = true,
