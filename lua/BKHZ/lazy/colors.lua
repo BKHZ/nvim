@@ -1,5 +1,32 @@
 return {
 	{
+		"catppuccin/nvim",
+		config = function()
+			require("catppuccin").setup {
+				flavour = "macchiato",
+				transparent_background = false,
+				term_colors = true,
+				integrations = {
+					mini = {
+						enabled = false,
+					},
+				},
+			}
+
+			vim.cmd.colorscheme("catppuccin")
+		end
+	},
+	{
+		"ellisonleao/gruvbox.nvim",
+		config = function()
+			require("gruvbox").setup {
+				terminal_colors = true,
+				undercurl = true,
+				underline = true,
+			}
+		end
+	},
+	{
 		"folke/tokyonight.nvim",
 		config = function()
 			require("tokyonight").setup {
@@ -13,8 +40,6 @@ return {
 					floats = "dark"
 				}
 			}
-
-			vim.cmd("colorscheme tokyonight-storm")
 		end
 	},
 }
