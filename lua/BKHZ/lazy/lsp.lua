@@ -17,6 +17,7 @@ return {
 		"hrsh7th/cmp-nvim-lsp-signature-help",
 		"folke/neodev.nvim",
 		"L3MON4D3/LuaSnip",
+		"j-hui/fidget.nvim",
 	},
 
 	config = function()
