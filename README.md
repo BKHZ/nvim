@@ -6,10 +6,10 @@
 	</h1>
 </div>
 
-# Neovimrc
+# Nvimrc 
 
 Plugins are managed via `lazy.nvim` and will automatically synchronize on nvim launch. LSP providers are managed via
-mason.
+`mason`.
 
 ## Setup
 
@@ -17,7 +17,7 @@ mason.
 
 #### Search
 
-If you want to use live text search (`<Leader>F`), you will need to have `ripgrep` installed. The latest stable release
+If you want to use live text search (`<leader>F`), you will need to have `ripgrep` installed. The latest stable release
 can be obtained from [here](https://github.com/BurntSushi/ripgrep).
 
 #### Clipboard
@@ -38,7 +38,7 @@ $ brew install pbcopy pbpaste
 
 Clone the repository under `~/.config/nvim`:
 ```bash
-$ git clone git@github.com:BKHZ/neovimrc.git ~/.config/nvim
+$ git clone git@github.com:BKHZ/nvimrc.git ~/.config/nvim
 ```
 
 Start neovim:
