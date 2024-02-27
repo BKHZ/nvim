@@ -58,13 +58,15 @@ return {
 			},
 
 			handlers = {
-				-- Default LSP server handler
+				-- Default handler
 				function(server)
 					lspconfig[server].setup {
 						capabilities = capabilities,
 					}
 				end,
 
+				-- Go handler
+				-- https://github.com/golang/tools/blob/master/gopls/doc/vim.md
 				["gopls"] = function()
 					lspconfig.gopls.setup {
 						capabilities = capabilities,
@@ -80,6 +82,7 @@ return {
 					}
 				end,
 
+				-- Lua handler
 				["lua_ls"] = function()
 					lspconfig.lua_ls.setup {
 						capabilities = capabilities,
