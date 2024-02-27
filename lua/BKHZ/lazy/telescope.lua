@@ -19,16 +19,17 @@ return {
 
 		local builtin = require("telescope.builtin")
 
-		vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
-		vim.keymap.set("n", "<C-p>", builtin.git_files, {})
+		-- File picker
+		vim.keymap.set("n", "<leader>f", builtin.find_files, {})
+		-- vim.keymap.set("n", "<C-p>", builtin.git_files, {})
 
-		-- General search
+		-- Interactive keyword search
 		vim.keymap.set("n", "<leader>ps", function()
-			builtin.grep_string({ search = vim.fn.input("grep > ") });
+			builtin.grep_string({ search = vim.fn.input("find > ") });
 		end)
 
-		-- Ripgrep live search
-		vim.keymap.set("n", "<leader>F", builtin.live_grep, {})
+		-- Search file contents (ripgrep)
+		vim.keymap.set("n", "<C-f>", builtin.live_grep, {})
 
 		-- List buffers
 		vim.keymap.set("n", "<leader>b", builtin.buffers, {})
