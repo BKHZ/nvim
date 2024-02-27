@@ -15,6 +15,11 @@ mason.
 
 ### Prerequisites
 
+#### Search
+
+If you want to use live text search (`<Leader>F`), you will need to have `ripgrep` installed. The latest stable release
+can be obtained from [here](https://github.com/BurntSushi/ripgrep).
+
 #### Clipboard
 
 If you want copy paste support from/into buffers, you will need a clipboard tool installed:
