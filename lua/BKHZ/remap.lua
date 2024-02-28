@@ -35,7 +35,7 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- LSP reformat current buffer
--- vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+vim.keymap.set("n", "<leader>T", vim.lsp.buf.format)
 
 -- Check keymap definition(s) for a given keymap.
 vim.keymap.set("n", "<leader>v", function()
