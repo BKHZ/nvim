@@ -46,6 +46,7 @@ return {
 		-- Mason LSP providers
 		require("mason-lspconfig").setup {
 			automatic_installation = false,
+			-- These are the language servers that we want automatically installed.
 			ensure_installed = {
 				"tsserver",
 				"eslint",
@@ -56,6 +57,14 @@ return {
 				"yamlls",
 				"lua_ls",
 				"clangd",
+				"ansiblels",
+				"bashls",
+				"crystalline",
+				"dockerls",
+				-- "nimls",
+				"spectral",
+				-- "psalm",
+				"zls",
 			},
 
 			handlers = {
