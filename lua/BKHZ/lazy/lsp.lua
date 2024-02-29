@@ -60,6 +60,9 @@ return {
 
 			handlers = {
 				-- Default handler
+				-- Any LSP server not explicitly defined will use this handler with the default capabilities.
+				-- Custom LSP overrides can be different per language; check the LSP servers help to ensure the correct
+				-- properties are used.
 				function(server)
 					lspconfig[server].setup {
 						capabilities = capabilities,
