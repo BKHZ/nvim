@@ -16,6 +16,11 @@ return {
 				view = {
 					stack_upwards = true,
 				},
+				window = {
+					border = "none",
+					x_padding = 3,
+					y_padding = 1,
+				},
 			},
 		}
 	end
