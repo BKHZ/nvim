@@ -20,6 +20,7 @@ return {
 			},
 		}, neotest_ns)
 
+		---@diagnostic disable-next-line: missing-fields
 		neotest.setup {
 			adapters = {
 				require("neotest-go")({
