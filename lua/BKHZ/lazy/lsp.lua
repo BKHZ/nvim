@@ -25,10 +25,10 @@ return {
 		local cmp_lsp = require("cmp_nvim_lsp")
 		local lspconfig = require("lspconfig")
 		local capabilities = vim.tbl_deep_extend(
-			"force",
-			{},
-			vim.lsp.protocol.make_client_capabilities(),
-			cmp_lsp.default_capabilities())
+		"force",
+		{},
+		vim.lsp.protocol.make_client_capabilities(),
+		cmp_lsp.default_capabilities())
 
 		-- Mason
 		require("mason").setup {
@@ -96,6 +96,16 @@ return {
 						}
 					}
 				end,
+
+				-- C++ handler
+				["clangd"] = function()
+					lspconfig.clangd.setup {
+						capabilities = capabilities,
+						filetypes = {
+							"c", "cpp", "proto",
+						},
+					}
+				end,
 			}
 		}
 
@@ -154,14 +164,15 @@ return {
 		}
 
 		-- LSP automatic formatting on save.
-		-- vim.api.nvim_create_autocmd("BufWritePre", {
-		-- 	buffer = buffer,
-		-- 	callback = function()
-		-- 		vim.lsp.buf.format {
-		-- 			async = true,
-		-- 		}
-		-- 	end
-		-- })
+		--vim.api.nvim_create_autocmd("BufWritePre", {
+		--	---@diagnostic disable-next-line: undefined-global
+		--	buffer = buffer,
+		--	callback = function()
+		--		vim.lsp.buf.format {
+		--			async = true,
+		--		}
+		--	end
+		--})
 
 		-- LSP auto-formatting for Go.
 		-- This will automatically sort imports.
