@@ -55,6 +55,7 @@ return {
 				"kotlin_language_server",
 				"yamlls",
 				"lua_ls",
+				"clangd",
 			},
 
 			handlers = {
