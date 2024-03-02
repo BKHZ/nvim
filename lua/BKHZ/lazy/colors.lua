@@ -5,8 +5,13 @@ return {
 			require("catppuccin").setup {
 				flavour = "macchiato",
 				transparent_background = false,
+				show_end_of_buffer = true,
 				term_colors = true,
 				integrations = {
+					cmp = true,
+					gitsigns = true,
+					treesitter = true,
+					notify = true,
 					mini = {
 						enabled = false,
 					},
