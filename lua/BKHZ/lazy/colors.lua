@@ -1,9 +1,10 @@
 return {
 	{
 		"catppuccin/nvim",
+		lazy = false,
 		config = function()
 			require("catppuccin").setup {
-				flavour = "macchiato",
+				flavour = "mocha",
 				transparent_background = false,
 				show_end_of_buffer = true,
 				term_colors = true,
@@ -11,7 +12,6 @@ return {
 					cmp = true,
 					gitsigns = true,
 					treesitter = true,
-					notify = true,
 					mini = {
 						enabled = false,
 					},
