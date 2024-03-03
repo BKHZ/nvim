@@ -1,7 +1,7 @@
 return {
 	"lukas-reineke/indent-blankline.nvim",
 	dependencies = {
-		"echasnovski/mini.indentscope",
+		{ "echasnovski/mini.indentscope", version = "*" },
 	},
 	config = function()
 		require("ibl").setup {
