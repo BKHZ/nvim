@@ -22,13 +22,14 @@ return {
 
 	config = function()
 		local cmp = require("cmp")
-		local cmp_lsp = require("cmp_nvim_lsp")
+		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 		local lspconfig = require("lspconfig")
+
 		local capabilities = vim.tbl_deep_extend(
 		"force",
 		{},
 		vim.lsp.protocol.make_client_capabilities(),
-		cmp_lsp.default_capabilities())
+		cmp_nvim_lsp.default_capabilities())
 
 		-- Mason
 		require("mason").setup {
@@ -65,6 +66,7 @@ return {
 				"spectral",
 				-- "psalm",
 				"zls",
+				"elixirls",
 			},
 
 			handlers = {
@@ -141,6 +143,7 @@ return {
 			},
 
 			window = {
+				completion = cmp.config.window.bordered(),
 				documentation = cmp.config.window.bordered()
 			},
 
