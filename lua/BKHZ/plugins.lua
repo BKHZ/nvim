@@ -18,4 +18,7 @@ require("lazy").setup({
 	change_detection = {
 		notify = false,
 	},
+	checker = {
+		enabled = true,
+	},
 })

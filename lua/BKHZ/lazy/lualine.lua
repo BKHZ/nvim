@@ -1,12 +1,15 @@
 return {
 	"nvim-lualine/lualine.nvim",
+	lazy = false,
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 		"tpope/vim-fugitive",
 		"folke/trouble.nvim",
+		"folke/lazy.nvim",
 	},
 
 	config = function()
+		local status = require("lazy.status")
 		require("lualine").setup {
 			icons_enabled = true,
 			theme = "auto",
@@ -17,7 +20,9 @@ return {
 				"trouble",
 			},
 			sections = {
-				lualine_a = { "mode" },
+				lualine_a = {
+					{ "mode" },
+				},
 				lualine_b = {
 					{ "branch" },
 					{ "diff" },
@@ -35,9 +40,22 @@ return {
 						path = 4,
 					}
 				},
-				lualine_x = { 'encoding', 'fileformat', 'filetype' },
-				lualine_y = { 'progress' },
-				lualine_z = { 'location' }
+				lualine_x = {
+					{ "encoding" },
+					{ "fileformat" },
+					{ "filetype" },
+					{
+						status.updates,
+						cond = status.has_updates,
+						color = { fg = "#ff9e64" }
+					},
+				},
+				lualine_y = {
+					{ "progress" }
+				},
+				lualine_z = {
+					{ "location" },
+				}
 			},
 		}
 	end
