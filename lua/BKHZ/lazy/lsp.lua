@@ -49,15 +49,16 @@ return {
 			automatic_installation = false,
 			-- These are the language servers that we want automatically installed.
 			ensure_installed = {
-				"tsserver",
-				"eslint",
-				"rust_analyzer",
 				"gopls",
 				"golangci_lint_ls",
+				"rust_analyzer",
+				"clangd",
+				"elixirls",
+				"tsserver",
+				"eslint",
 				"kotlin_language_server",
 				"yamlls",
 				"lua_ls",
-				"clangd",
 				"ansiblels",
 				"bashls",
 				"crystalline",
@@ -66,7 +67,6 @@ return {
 				"spectral",
 				-- "psalm",
 				"zls",
-				"elixirls",
 			},
 
 			handlers = {
