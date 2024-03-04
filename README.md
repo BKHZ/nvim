@@ -29,11 +29,6 @@ ArchLinux (Wayland/X11):
 $ pacman -S wl-clipboard xclip xsel
 ```
 
-Mac OS X:
-```bash
-$ brew install pbcopy pbpaste
-```
-
 #### Packages
 
 **Fonts**:
