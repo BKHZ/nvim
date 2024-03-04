@@ -43,8 +43,3 @@ vim.keymap.set("n", "<leader>T", vim.lsp.buf.format)
 vim.keymap.set("n", "<leader>v", function()
 	vim.cmd(":verbose map " .. vim.fn.input("find keymap: "))
 end)
-
--- Re-source the current file.
-vim.keymap.set("n", "<leader><leader>", function()
-	vim.cmd("so")
-end)
