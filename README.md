@@ -46,6 +46,14 @@ Start neovim:
 $ nvim
 ```
 
+#### Packages
+
+**Fonts**:
+```bash
+$ sudo pacman -S ttf-cascadia-code \
+	ttf-cascadia-mono-nerd
+```
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).

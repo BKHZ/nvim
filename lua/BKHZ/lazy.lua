@@ -11,14 +11,33 @@ if not vim.loop.fs_stat(lazypath) then
 		lazypath,
 	})
 end
+
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
-	spec = "BKHZ.plugins",
+require("lazy").setup("BKHZ.plugins", {
 	change_detection = {
-		notify = false,
+		notify = true,
+	},
+	install = {
+		-- Don't install missing plugins on startup
+		missing = false,
 	},
 	checker = {
 		enabled = true,
+		-- Slow down plugin checks
+		concurrency = 1,
+		-- Check for updates every 4 hours
+		frequency = 14400,
+	},
+	performance = {
+		cache = {
+			enabled = true,
+		},
+		rtp = {
+			disabled_plugins = {
+				"tutor",
+				"tohtml",
+			},
+		},
 	},
 })
