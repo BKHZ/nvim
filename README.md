@@ -48,6 +48,11 @@ Start neovim:
 $ nvim
 ```
 
+Install and update plugins:
+```bash
+:Lazy install
+```
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
