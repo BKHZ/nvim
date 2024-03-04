@@ -24,9 +24,8 @@ can be obtained from [here](https://github.com/BurntSushi/ripgrep).
 
 If you want copy paste support from/into buffers, you will need a clipboard tool installed:
 
-ArchLinux (Wayland/X11):
 ```bash
-$ pacman -S wl-clipboard xclip xsel
+$ sudo pacman -S wl-clipboard xclip xsel
 ```
 
 #### Packages
