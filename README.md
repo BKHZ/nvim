@@ -9,7 +9,7 @@
 # Nvimrc 
 
 Plugins are managed via `lazy.nvim` and will automatically synchronize on nvim launch. LSP providers are managed via
-`mason`.
+`mason`. Autocompletion is provided by `cmp`.
 
 ## Setup
 
