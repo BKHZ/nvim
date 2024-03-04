@@ -34,6 +34,14 @@ Mac OS X:
 $ brew install pbcopy pbpaste
 ```
 
+#### Packages
+
+**Fonts**:
+```bash
+$ sudo pacman -S ttf-cascadia-code \
+	ttf-cascadia-mono-nerd
+```
+
 ### Installation
 
 Clone the repository under `~/.config/nvim`:
@@ -44,14 +52,6 @@ $ git clone git@github.com:BKHZ/nvimrc.git ~/.config/nvim
 Start neovim:
 ```bash
 $ nvim
-```
-
-#### Packages
-
-**Fonts**:
-```bash
-$ sudo pacman -S ttf-cascadia-code \
-	ttf-cascadia-mono-nerd
 ```
 
 ## License
