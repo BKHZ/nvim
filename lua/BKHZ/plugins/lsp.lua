@@ -53,7 +53,6 @@ return {
 				"bashls",
 				"crystalline",
 				"dockerls",
-				"spectral",
 				"zls",
 			},
 
