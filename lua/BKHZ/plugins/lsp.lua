@@ -9,32 +9,21 @@ return {
 	dependencies = {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
-		"hrsh7th/nvim-cmp",
 		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-path",
-		"hrsh7th/cmp-cmdline",
-		"hrsh7th/cmp-nvim-lsp-signature-help",
 		"folke/neodev.nvim",
-		"L3MON4D3/LuaSnip",
 		"j-hui/fidget.nvim",
 	},
 
 	config = function()
-		-- Ghost text highlighting
-		vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
-
-		local cmp = require("cmp")
-		local cmp_nvim_lsp = require("cmp_nvim_lsp")
+		local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 		local lspconfig = require("lspconfig")
-
 		local capabilities = vim.tbl_deep_extend(
-		"force",
-		{},
-		vim.lsp.protocol.make_client_capabilities(),
-		cmp_nvim_lsp.default_capabilities())
+			"force",
+			{},
+			vim.lsp.protocol.make_client_capabilities(),
+			has_cmp and cmp_nvim_lsp.default_capabilities() or {}
+		)
 
-		-- Mason
 		require("mason").setup {
 			max_concurrent_installers = 4,
 			ui = {
@@ -42,12 +31,10 @@ return {
 			}
 		}
 
-		-- Neodev setup must be before lspconfig
 		require("neodev").setup {
 			lspconfig = true,
 		}
 
-		-- Mason LSP providers
 		require("mason-lspconfig").setup {
 			automatic_installation = false,
 			-- These are the language servers that we want automatically installed.
@@ -66,9 +53,7 @@ return {
 				"bashls",
 				"crystalline",
 				"dockerls",
-				-- "nimls",
 				"spectral",
-				-- "psalm",
 				"zls",
 			},
 
@@ -92,9 +77,16 @@ return {
 							gopls = {
 								analyses = {
 									unusedparams = true,
+									unusedwrite = true,
+									fieldalignment = true,
+								},
+								hints = {
+									parameterNames = true,
 								},
 								staticcheck = true,
 								gofumpt = true,
+								completeUnimported = true,
+								usePlaceholders = true,
 							}
 						}
 					}
@@ -126,77 +118,6 @@ return {
 			}
 		}
 
-		local cmp_defaults = require("cmp.config.default")()
-
-		-- Completion
-		cmp.setup {
-			-- CMP snippets
-			snippet = {
-				expand = function(args)
-					require("luasnip").lsp_expand(args.body)
-				end,
-			},
-
-			-- CMP window
-			window = {
-				completion = cmp.config.window.bordered(),
-				documentation = cmp.config.window.bordered()
-			},
-
-			-- CMP sources
-			sources = cmp.config.sources({
-				{ name = "nvim_lsp" },
-				{ name = "path" },
-				{ name = "luasnip" },
-				{ name = "nvim_lsp_signature_help" },
-			}, {
-				{ name = "buffer" },
-			}),
-
-			-- CMP formatting
-			formatting = {
-				expandable_indicator = true,
-				fields = { "kind", "abbr", "menu" },
-				format = function(entry, item)
-					item.menu = entry:get_completion_item().detail
-					return item
-				end,
-			},
-
-			-- CMP completion
-			completion = {
-				completeopt = "menu,menuone,noinsert",
-			},
-
-			-- CMP key maps
-			mapping = cmp.mapping.preset.insert({
-				["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-				["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-				["<C-b>"] = cmp.mapping.scroll_docs(-4),
-      			["<C-f>"] = cmp.mapping.scroll_docs(4),
-				["<C-Space>"] = cmp.mapping.complete(),
-				["<C-e>"] = cmp.mapping.abort(),
-				["<CR>"] = cmp.mapping.confirm({ select = true }),
-				["<S-CR>"] = cmp.mapping.confirm({
-					behavior = cmp.ConfirmBehavior.Replace,
-					select = true,
-				}),
-				["<C-CR>"] = function(fallback)
-					cmp.abort()
-					fallback()
-				end,
-			}),
-
-			-- CMP experiments
-			experimental = {
-				ghost_text = {
-					hl_group = "CmpGhostText",
-				},
-			},
-
-			sorting = cmp_defaults.sorting,
-		}
-
 		-- Diagnostics styling
 		vim.diagnostic.config {
 			float = {
@@ -208,17 +129,6 @@ return {
 				prefix = "",
 			}
 		}
-
-		-- LSP automatic formatting on save.
-		--vim.api.nvim_create_autocmd("BufWritePre", {
-		--	---@diagnostic disable-next-line: undefined-global
-		--	buffer = buffer,
-		--	callback = function()
-		--		vim.lsp.buf.format {
-		--			async = true,
-		--		}
-		--	end
-		--})
 
 		-- LSP auto-formatting for Go.
 		-- This will automatically sort imports.
@@ -243,6 +153,27 @@ return {
 				end
 				vim.lsp.buf.format({ async = false })
 			end
+		})
+
+		-- Only remap keys after language server has attached to current buffer
+		vim.api.nvim_create_autocmd('LspAttach', {
+			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+			callback = function(event)
+				local opts = { buffer = event.buf }
+
+				vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+				vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+				vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
+				vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
+				vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
+				vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+				vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+				vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+				vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+
+				-- Code action picker
+				vim.keymap.set('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+			end,
 		})
 	end
 }
