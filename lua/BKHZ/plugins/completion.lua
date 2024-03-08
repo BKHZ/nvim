@@ -22,7 +22,15 @@ return {
 		local cmp = require("cmp")
 		local cmp_defaults = require("cmp.config.default")()
 
+		local has_words_before = function()
+			local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+			return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+		end
+
 		cmp.setup {
+			-- Skip automatically selecting the first item
+			preselect = "None",
+
 			snippet = {
 				expand = function(args)
 					require("luasnip").lsp_expand(args.body) -- Luasnip snippets
@@ -43,14 +51,20 @@ return {
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.abort(),
 				["<CR>"] = cmp.mapping.confirm({ select = true }),
-				["<S-CR>"] = cmp.mapping.confirm({
-					behavior = cmp.ConfirmBehavior.Replace,
-					select = true,
-				}),
+				["<S-CR>"] = cmp.mapping.confirm({behavior = cmp.ConfirmBehavior.Replace,select = true}),
 				["<C-CR>"] = function(fallback)
 					cmp.abort()
 					fallback()
 				end,
+				["<Tab>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_next_item()
+					elseif has_words_before() then
+						cmp.complete()
+					else
+						fallback()
+					end
+				end, { "i", "s" })
 			}),
 
 			sources = cmp.config.sources({
