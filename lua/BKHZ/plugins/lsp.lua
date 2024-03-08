@@ -58,17 +58,13 @@ return {
 
 			handlers = {
 				-- Default handler
-				-- Any LSP server not explicitly defined will use this handler with the default capabilities.
-				-- Custom LSP overrides can be different per language; check the LSP servers help to ensure the correct
-				-- properties are used.
-				function(server)
-					lspconfig[server].setup {
+				function(server_name)
+					lspconfig[server_name].setup {
 						capabilities = capabilities,
 					}
 				end,
 
 				-- Go handler
-				-- https://github.com/golang/tools/blob/master/gopls/doc/vim.md
 				["gopls"] = function()
 					lspconfig.gopls.setup {
 						capabilities = capabilities,
@@ -117,17 +113,27 @@ return {
 			}
 		}
 
-		-- Diagnostics styling
-		vim.diagnostic.config {
-			float = {
-				focusable = false,
-				style = "minimal",
-				border = "rounded",
-				source = "always",
-				header = "",
-				prefix = "",
-			}
-		}
+		-- LSP keymap shortcuts
+		-- Only remap keys after language server has attached to current buffer
+		vim.api.nvim_create_autocmd('LspAttach', {
+			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+			callback = function(event)
+				local opts = { buffer = event.buf }
+
+				vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+				vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+				vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
+				vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
+				vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
+				vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+				vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+				vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+				vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+
+				-- Code action picker
+				vim.keymap.set('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+			end,
+		})
 
 		-- LSP auto-formatting for Go.
 		-- This will automatically sort imports.
@@ -152,27 +158,6 @@ return {
 				end
 				vim.lsp.buf.format({ async = false })
 			end
-		})
-
-		-- Only remap keys after language server has attached to current buffer
-		vim.api.nvim_create_autocmd('LspAttach', {
-			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-			callback = function(event)
-				local opts = { buffer = event.buf }
-
-				vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-				vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-				vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-				vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-				vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-				vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-				vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-				vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-				vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-
-				-- Code action picker
-				vim.keymap.set('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-			end,
 		})
 	end
 }

@@ -7,7 +7,12 @@ return {
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
 		"hrsh7th/cmp-nvim-lsp-signature-help",
+		-- Luasnip snippets
 		"L3MON4D3/LuaSnip",
+		"saadparwaiz1/cmp_luasnip",
+		-- Snippy snippets
+		-- "dcampos/nvim-snippy",
+		-- "dcampos/cmp-snippy",
 	},
 
 	config = function()
@@ -18,45 +23,18 @@ return {
 		local cmp_defaults = require("cmp.config.default")()
 
 		cmp.setup {
-			-- CMP snippets
 			snippet = {
 				expand = function(args)
-					require("luasnip").lsp_expand(args.body)
+					require("luasnip").lsp_expand(args.body) -- Luasnip snippets
+					-- require("snippy").expand_snippet(args.body) -- Snippy snippets
 				end,
 			},
 
-			-- CMP window
 			window = {
 				completion = cmp.config.window.bordered(),
 				documentation = cmp.config.window.bordered()
 			},
 
-			-- CMP sources
-			sources = cmp.config.sources({
-				{ name = "nvim_lsp" },
-				{ name = "path" },
-				{ name = "luasnip" },
-				{ name = "nvim_lsp_signature_help" },
-			}, {
-				{ name = "buffer" },
-			}),
-
-			-- CMP formatting
-			formatting = {
-				expandable_indicator = true,
-				fields = { "kind", "abbr", "menu" },
-				format = function(entry, item)
-					item.menu = entry:get_completion_item().detail
-					return item
-				end,
-			},
-
-			-- CMP completion
-			completion = {
-				completeopt = "menu,menuone,noinsert",
-			},
-
-			-- CMP key maps
 			mapping = cmp.mapping.preset.insert({
 				["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
 				["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
@@ -75,7 +53,28 @@ return {
 				end,
 			}),
 
-			-- CMP experiments
+			sources = cmp.config.sources({
+				{ name = "nvim_lsp" },
+				-- { name = "snippy" }, -- Snippy snippet source
+				{ name = "luasnip" }, -- Luasnip snippet source
+				{ name = "nvim_lsp_signature_help" },
+			}, {
+				{ name = "buffer" },
+			}),
+
+			formatting = {
+				expandable_indicator = true,
+				fields = { "kind", "abbr", "menu" },
+				format = function(entry, item)
+					item.menu = entry:get_completion_item().detail
+					return item
+				end,
+			},
+
+			completion = {
+				completeopt = "menu,menuone,noinsert",
+			},
+
 			experimental = {
 				ghost_text = {
 					hl_group = "CmpGhostText",
