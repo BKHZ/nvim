@@ -1,5 +1,6 @@
 local config = {
-	clipboard = "unnamedplus",
+	-- Allow copying to wayland clipboard
+	-- clipboard = "unnamedplus",
 	cmdheight = 1,
 	completeopt = { "menuone", "noselect" },
 	fileencoding = "utf-8",
