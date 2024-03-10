@@ -27,6 +27,7 @@ vim.keymap.set("n", "<leader>q", "<cmd>:BufferClose<cr>")
 -- Unmap arrow keys
 local msg = [[<cmd>echohl Error | echo "KEY DISABLED" | echohl None<CR>]]
 
+-- Movement hard mode
 vim.api.nvim_set_keymap('i', '<Up>', '<C-o>' .. msg, { noremap = true, silent = false })
 vim.api.nvim_set_keymap('i', '<Down>', '<C-o>' .. msg, { noremap = true, silent = false })
 vim.api.nvim_set_keymap('i', '<Left>', '<C-o>' .. msg, { noremap = true, silent = false })
