@@ -87,6 +87,15 @@ return {
 					}
 				end,
 
+				-- Gdscript
+				["gdscript"] = function()
+					lspconfig.gdscript.setup {
+						capabilities = capabilities,
+						cmd = { "nc", "127.0.0.1", "6008"},
+						filetypes = { "gd", "gdscript" },
+					}
+				end,
+
 				-- Lua handler
 				["lua_ls"] = function()
 					lspconfig.lua_ls.setup {
