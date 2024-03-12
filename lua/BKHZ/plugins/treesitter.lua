@@ -7,13 +7,21 @@ return {
 			-- A list of parser names, or "all" (the five listed parsers should always be installed)
 			-- https://github.com/nvim-treesitter/nvim-treesitter
 			ensure_installed = {
+				"bash",
+				"comment",
 				"typescript",
 				"go",
+				"gomod",
+				"gosum",
+				"gowork",
 				"c",
 				"cpp",
 				"rust",
+				"make",
+				"dockerfile",
 				"scala",
 				"lua",
+				"luadoc",
 				"vim",
 				"vimdoc",
 				"query",
