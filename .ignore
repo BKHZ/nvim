@@ -1,3 +1,4 @@
 # Ripgrep ignored files and directories
 
+.assets/
 lazy-lock.json
