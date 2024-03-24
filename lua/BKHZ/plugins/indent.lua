@@ -7,10 +7,22 @@ return {
 		require("ibl").setup {
 			indent = {
 				char = "│",
+				tab_char = "│",
 			},
 			scope = {
 				-- Disable scope guides
 				enabled = false,
+			},
+			exclude = {
+				filetypes = {
+					"help",
+					"alpha",
+					"Trouble",
+					"trouble",
+					"lazy",
+					"mason",
+					"notify",
+				}
 			}
 		}
 

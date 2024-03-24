@@ -113,6 +113,9 @@ return {
 			}
 		}
 
+		-- LSP reformat current buffer
+		vim.keymap.set("n", "<leader>T", vim.lsp.buf.format)
+
 		-- LSP keymap shortcuts
 		-- Only remap keys after language server has attached to current buffer
 		vim.api.nvim_create_autocmd('LspAttach', {

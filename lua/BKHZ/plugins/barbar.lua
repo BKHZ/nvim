@@ -1,5 +1,7 @@
 return {
 	"romgrk/barbar.nvim",
+	-- This plugin is disabled
+	enabled = false,
 	dependencies = {
 		"lewis6991/gitsigns.nvim",
 		"nvim-tree/nvim-web-devicons",

@@ -14,15 +14,10 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 -- Yank text to the end of the line to the system clipboard.
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
--- LSP reformat current buffer
-vim.keymap.set("n", "<leader>T", vim.lsp.buf.format)
-
 -- Check keymap definition(s) for a given keymap.
 vim.keymap.set("n", "<leader>v", function()
 	vim.cmd(":verbose map " .. vim.fn.input("find keymap: "))
 end)
-
-vim.keymap.set("n", "<leader>q", "<cmd>:BufferClose<cr>")
 
 -- Unmap arrow keys
 local msg = [[<cmd>echohl Error | echo "KEY DISABLED" | echohl None<CR>]]
