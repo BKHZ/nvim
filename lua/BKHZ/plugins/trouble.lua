@@ -15,7 +15,7 @@ return {
 			-- Automatically open list when diagnostics are detected
 			auto_open = true,
 			-- Automatically close list when no diagnostics are detected
-			auto_close = true,
+			auto_close = false,
 			-- Mappings for keymaps in the diagnostics window
 			action_keys = {
 				close = "q",
