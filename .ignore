@@ -1,4 +1,7 @@
 # Ripgrep ignored files and directories
 
+!.stylua.toml
+!.gitignore
+
 .assets/
 lazy-lock.json
