@@ -18,6 +18,7 @@ return {
 				},
 				window = {
 					border = "none",
+					winblend = 0,
 					x_padding = 3,
 					y_padding = 1,
 				},

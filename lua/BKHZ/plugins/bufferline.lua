@@ -3,22 +3,19 @@ return {
 	version = "*",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
+		"catppuccin/nvim",
 	},
 	event = {
 		"VeryLazy",
 	},
+	after = "catppuccin",
 	keys = {
 		{ "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
 		{ "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
 	},
 	config = function()
 		require("bufferline").setup{
-			highlights = {
-				buffer_selected = {
-					bold = false,
-					italic = false,
-				}
-			},
+			highlights = require("catppuccin.groups.integrations.bufferline").get(),
 			options = {
 				mode = "buffers",
 				separator_style = "slant",
