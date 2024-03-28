@@ -41,7 +41,7 @@ return {
 
 		-- File picker
 		vim.keymap.set("n", "<leader>f", builtin.find_files, {})
-		-- vim.keymap.set("n", "<C-p>", builtin.git_files, {})
+		vim.keymap.set("n", "<C-p>", builtin.git_files, {})
 
 		-- Interactive keyword search
 		vim.keymap.set("n", "<leader>ps", function()
