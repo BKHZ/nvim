@@ -62,69 +62,63 @@ return {
                         capabilities = capabilities,
                     }
                 end,
-
-                -- Go handler
-                ["gopls"] = function ()
-                    lspconfig.gopls.setup {
-                        capabilities = capabilities,
-                        settings = {
-                            gopls = {
-                                analyses = {
-                                    unusedparams = true,
-                                    unusedwrite = true,
-                                    fieldalignment = true,
-                                },
-                                hints = {
-                                    parameterNames = true,
-                                },
-                                staticcheck = true,
-                                gofumpt = true,
-                                completeUnimported = true,
-                                usePlaceholders = true,
-                            }
-                        }
-                    }
-                end,
-
-                -- Lua handler
-                ["lua_ls"] = function ()
-                    lspconfig.lua_ls.setup {
-                        capabilities = capabilities,
-                        settings = {
-                            Lua = {
-                                runtime = {
-                                    version = "LuaJIT",
-                                },
-                                format = {
-                                    enable = true,
-                                },
-                                defaultConfig = {
-                                    indent_style = "space",
-                                    indent_size = "2",
-                                },
-                                diagnostics = {
-                                    globals = { "vim", "it", "describe", "before_each", "after_each" }
-                                }
-                            }
-                        }
-                    }
-                end,
-
-                -- C++ handler
-                ["clangd"] = function ()
-                    lspconfig.clangd.setup {
-                        capabilities = capabilities,
-                        filetypes = {
-                            "c", "cpp", "proto",
-                        },
-                    }
-                end,
             }
         }
 
-        -- Setup Godot LSP outside of Mason config as its not supported
+        -- Go LSP
+        lspconfig.gopls.setup {
+            -- capabilities = capabilities,
+            settings = {
+                gopls = {
+                    analyses = {
+                        unusedparams = true,
+                        unusedwrite = true,
+                        fieldalignment = true,
+                    },
+                    hints = {
+                        parameterNames = true,
+                    },
+                    staticcheck = true,
+                    gofumpt = true,
+                    completeUnimported = true,
+                    usePlaceholders = true,
+                }
+            }
+        }
+
+        -- Clang LSP
+        lspconfig.clangd.setup {
+            -- capabilities = capabilities,
+            filetypes = {
+                "c", "cpp", "proto",
+            },
+        }
+
+        -- Lua LSP
+        lspconfig.lua_ls.setup {
+            -- capabilities = capabilities,
+            settings = {
+                Lua = {
+                    runtime = {
+                        version = "LuaJIT",
+                    },
+                    format = {
+                        enable = true,
+                    },
+                    defaultConfig = {
+                        indent_style = "space",
+                        indent_size = "2",
+                    },
+                    diagnostics = {
+                        globals = { "vim", "it", "describe", "before_each", "after_each" }
+                    }
+                }
+            }
+        }
+
+        -- Gdscript LSP
         lspconfig.gdscript.setup {
-            capabilities = capabilities,
+            -- capabilities = capabilities,
             cmd = {
                 "ncat", "localhost", "6008",
             }
