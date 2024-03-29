@@ -53,7 +53,6 @@ return {
                 "bashls",
                 "crystalline",
                 "dockerls",
-                "zls",
             },
 
             handlers = {
@@ -120,6 +119,14 @@ return {
                         },
                     }
                 end,
+            }
+        }
+
+        -- Setup Godot LSP outside of Mason config as its not supported
+        lspconfig.gdscript.setup {
+            capabilities = capabilities,
+            cmd = {
+                "ncat", "localhost", "6008",
             }
         }
 
