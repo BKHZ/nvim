@@ -71,7 +71,6 @@ return {
 
         -- Go LSP
         lspconfig.gopls.setup {
-            -- capabilities = capabilities,
             settings = {
                 gopls = {
                     analyses = {
@@ -92,7 +91,6 @@ return {
 
         -- Clang LSP
         lspconfig.clangd.setup {
-            -- capabilities = capabilities,
             filetypes = {
                 "c", "cpp", "proto",
             },
@@ -100,7 +98,6 @@ return {
 
         -- Lua LSP
         lspconfig.lua_ls.setup {
-            -- capabilities = capabilities,
             settings = {
                 Lua = {
                     runtime = {
@@ -122,7 +119,6 @@ return {
 
         -- Gdscript LSP
         lspconfig.gdscript.setup {
-            -- capabilities = capabilities,
             cmd = {
                 "ncat", "localhost", "6008",
             }
