@@ -49,10 +49,14 @@ return {
                 "kotlin_language_server",
                 "yamlls",
                 "lua_ls",
+                "pyright",
                 "ansiblels",
                 "bashls",
                 "crystalline",
                 "dockerls",
+                "cmake",
+                "cssls",
+                "taplo",
             },
 
             handlers = {
