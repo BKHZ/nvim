@@ -38,7 +38,7 @@ return {
                         "filename",
                         -- Filename and parent dir, with tilde as the home directory
                         path = 4,
-                    }
+                    },
                 },
                 lualine_x = {
                     { "encoding" },
@@ -58,5 +58,13 @@ return {
                 }
             },
         }
+
+        -- listen lsp-progress event and refresh lualine
+        vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
+        vim.api.nvim_create_autocmd("User", {
+            group = "lualine_augroup",
+            pattern = "LspProgressStatusUpdated",
+            callback = require("lualine").refresh,
+        })
     end
 }
