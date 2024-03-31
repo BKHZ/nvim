@@ -42,14 +42,13 @@ return {
         -- File picker
         vim.keymap.set("n", "<leader>f", builtin.find_files, {})
         vim.keymap.set("n", "<C-p>", builtin.git_files, {})
+        -- Search file contents (ripgrep)
+        vim.keymap.set("n", "<leader>F", builtin.live_grep, {})
 
         -- Interactive keyword search
         vim.keymap.set("n", "<leader>ps", function ()
-            builtin.grep_string({ search = vim.fn.input("find > ") });
+            builtin.grep_string({ search = vim.fn.input("cwd search > ") });
         end)
-
-        -- Search file contents (ripgrep)
-        vim.keymap.set("n", "<C-f>", builtin.live_grep, {})
 
         -- List buffers
         vim.keymap.set("n", "<leader>b", builtin.buffers, {})
