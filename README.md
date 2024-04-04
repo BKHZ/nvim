@@ -41,6 +41,11 @@ Clone the repository under `~/.config/nvim`:
 $ git clone git@github.com:BKHZ/nvimrc.git ~/.config/nvim
 ```
 
+Create optional legacy vim symlink in your PATH:
+```bash
+$ ln -fs /usr/bin/nvim /usr/local/bin/vim
+```
+
 Start neovim:
 ```bash
 $ nvim
