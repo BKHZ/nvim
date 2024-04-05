@@ -20,6 +20,10 @@ return {
                     barbar = true,
                     treesitter = true,
                     nvimtree = false,
+                    indent_blankline = {
+                        enabled = true,
+                        colored_indent_levels = false,
+                    },
                     mini = {
                         enabled = false,
                     },
@@ -34,6 +38,24 @@ return {
                     illuminate = {
                         enabled = true,
                         lsp = true,
+                    },
+                    native_lsp = {
+                        enabled = true,
+                        virtual_text = {
+                            errors = { "bold" },
+                            hints = { "italic" },
+                            warnings = { "italic" },
+                            information = { "italic" },
+                        },
+                        underlines = {
+                            errors = { "undercurl" },
+                            hints = { "underdotted" },
+                            warnings = { "underdashed" },
+                            information = { "underline" },
+                        },
+                        inlay_hints = {
+                            background = true,
+                        },
                     },
                 },
             }
