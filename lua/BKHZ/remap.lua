@@ -4,11 +4,6 @@ vim.g.mapleader = " "
 -- Open netrw browser
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
--- Diagnostics
-vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>")
-vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
-vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>")
-
 -- Yank visually selected text to the system clipboard.
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 -- Yank text to the end of the line to the system clipboard.
