@@ -38,11 +38,6 @@ return {
                 end,
             },
 
-            window = {
-                completion = cmp.config.window.bordered(),
-                documentation = cmp.config.window.bordered()
-            },
-
             mapping = cmp.mapping.preset.insert({
                 ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
                 ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
@@ -68,19 +63,41 @@ return {
             }),
 
             sources = cmp.config.sources({
-                { name = "nvim_lsp" },
-                -- { name = "snippy" }, -- Snippy snippet source
-                { name = "luasnip" }, -- Luasnip snippet source
+                -- File paths
+                { name = "path" },
+                -- Language server
+                { name = "nvim_lsp",               keyword_length = 3 },
+                -- Function signatures
                 { name = "nvim_lsp_signature_help" },
-            }, {
-                { name = "buffer" },
+                -- Complete neovims Lua runtime API (vim.lsp.*)
+                { name = "nvim_lua",               keyword_length = 2 },
+                -- Source current buffer
+                { name = "buffer",                 keyword_length = 2 },
+                -- nvim-cmp source for luasnip
+                { name = "luasnip",                keyword_length = 2 },
             }),
+
+            window = {
+                completion = cmp.config.window.bordered(),
+                documentation = cmp.config.window.bordered()
+            },
 
             formatting = {
                 expandable_indicator = true,
-                fields = { "kind", "abbr", "menu" },
+                -- fields = { "kind", "abbr", "menu" },
+                fields = { "menu", "kind", "abbr" },
                 format = function (entry, item)
-                    item.menu = entry:get_completion_item().detail
+                    -- item.menu = entry:get_completion_item().detail
+                    -- return item
+
+                    local menu_icon = {
+                        nvim_lsp = "λ",
+                        luasnip = "⋗",
+                        buffer = "Ω",
+                        path = "🖫",
+                    }
+
+                    item.menu = menu_icon[entry.source.name]
                     return item
                 end,
             },

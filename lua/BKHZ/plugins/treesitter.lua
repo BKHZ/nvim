@@ -44,6 +44,16 @@ return {
             -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
             auto_install = false,
 
+            ident = {
+                enable = true,
+            },
+
+            rainbow = {
+                enable = true,
+                extended_mode = true,
+                max_file_lines = nil,
+            },
+
             highlight = {
                 enable = true,
 
