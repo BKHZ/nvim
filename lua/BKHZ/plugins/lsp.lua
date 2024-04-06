@@ -148,7 +148,8 @@ return {
                 vim.keymap.set({ "n", "x" }, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
 
                 -- Code action picker
-                vim.keymap.set("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+                -- Replaced by actions-preview (in completion.lua).
+                -- vim.keymap.set("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 
                 -- LSP reformat current buffer
                 vim.keymap.set("n", "<leader>T", vim.lsp.buf.format)
