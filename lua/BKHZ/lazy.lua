@@ -25,7 +25,7 @@ require("lazy").setup("BKHZ.plugins", {
     checker = {
         enabled = true,
         -- Slow down plugin checks
-        concurrency = 1,
+        concurrency = 3,
         -- Check for updates every 4 hours
         frequency = 14400,
     },
