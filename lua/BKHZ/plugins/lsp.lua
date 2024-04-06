@@ -125,6 +125,11 @@ return {
             }
         }
 
+        -- ESLint LSP
+        lspconfig.eslint.setup {
+            capabilities = capabilities,
+        }
+
         -- LSP keymap shortcuts
         -- Only remap keys after language server has attached to current buffer
         vim.api.nvim_create_autocmd("LspAttach", {
