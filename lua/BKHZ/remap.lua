@@ -26,3 +26,8 @@ vim.api.nvim_set_keymap("n", "<Up>", msg, { noremap = true, silent = false })
 vim.api.nvim_set_keymap("n", "<Down>", msg, { noremap = true, silent = false })
 vim.api.nvim_set_keymap("n", "<Left>", msg, { noremap = true, silent = false })
 vim.api.nvim_set_keymap("n", "<Right>", msg, { noremap = true, silent = false })
+
+-- Reload the current LUA file.
+vim.keymap.set("n", "<leader><leader>", function ()
+    vim.cmd("so")
+end)

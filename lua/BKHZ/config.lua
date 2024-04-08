@@ -7,7 +7,7 @@ local config = {
     -- Keep multiple buffers
     hidden = true,
     -- Auto-completion time
-    updatetime = 1000,
+    updatetime = 100,
     -- Enable GUI colors
     termguicolors = true,
     -- Disable backup files
@@ -33,7 +33,7 @@ local config = {
     sidescrolloff = 8,
     -- Always show the sign columns to avoid unnecessary text movement
     signcolumn = "yes",
-    -- Rulers
+    -- Rulers (yes its not 80 chars, no it's not 1990)
     colorcolumn = "120",
     -- Highlight current line
     cursorline = true,
