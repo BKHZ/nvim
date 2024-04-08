@@ -15,18 +15,25 @@ return {
                     return
                 end
 
-                local opts = { buffer = vim.api.nvim_get_current_buf(), remap = false, silent = true }
+                local opts = { buffer = vim.api.nvim_get_current_buf(), remap = false, silent = false }
+                -- Pull from currently active origin branch
+                vim.keymap.set("n", "<leader>p", function ()
+                    vim.cmd.Git({ "pull" })
+                end)
+
+                -- Push to currently active origin branch
                 vim.keymap.set("n", "<leader>P", function ()
                     vim.cmd.Git("push")
                 end, opts)
 
-                vim.keymap.set("n", "<leader>p", function ()
-                    vim.cmd.Git({ "pull", "--rebase" })
-                end, opts)
+                -- Pull from a different origin branch
+                vim.keymap.set("n", "<leader>o", ":Git pull -u origin ", opts)
 
-                vim.keymap.set("n", "<leader>o", function ()
-                    vim.cmd.Git({ "push", "-u origin", opts})
-                end)
+                -- Push to a different branch
+                vim.keymap.set("n", "<leader>O", ":Git push -u origin ", opts)
+
+                -- Pull from a different upstream branch
+                vim.keymap.set("n", "<leader>u", ":Git pull -u upstream ", opts)
             end
         })
     end
