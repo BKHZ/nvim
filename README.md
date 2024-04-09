@@ -3,7 +3,16 @@
 Plugins are managed via `lazy.nvim` and will automatically synchronize on nvim launch. LSP providers are managed via
 `mason`. Autocompletion is provided by `cmp`.
 
-## Packages (optional)
+## Packages
+
+Install NeoVim:
+
+### Arch Linux
+
+```bash
+$ sudo pacman -S neovim \
+	neovim-lspconfig
+```
 
 Install the below optional system packages:
 
@@ -19,7 +28,7 @@ $ sudo pacman -S ttf-cascadia-code \
 	xsel
 ```
 
-## Installation
+## Configuration
 
 Clone the repository under `~/.config/nvim`:
 ```bash
