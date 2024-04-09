@@ -30,8 +30,8 @@ $ sudo pacman -S ttf-cascadia-code \
 ```
 
 A patched nerd font is required to correctly display icons in various plugins that rely on `nvim-web-devicons`. The
-`ripgrep` package provides ultra fast file search and indexing support. If you are running X11 instead of wayland, you
-can omit installing the `xclip` and `xsel` packages.
+`ripgrep` package provides ultra fast file search and indexing support. If you are running Wayland instead of X11, you
+can omit installing the `xclip` and `xsel` packages, otherwise omit `wl-clipboard`.
 
 ## Setup
 
