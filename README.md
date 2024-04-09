@@ -20,6 +20,7 @@ Install the below optional system packages:
 
 ```bash
 $ sudo pacman -S ttf-cascadia-code \
+	ttf-cascadia-code \
 	ttf-cascadia-mono-nerd \
 	diff-so-fancy \
 	ripgrep \
@@ -28,7 +29,11 @@ $ sudo pacman -S ttf-cascadia-code \
 	xsel
 ```
 
-## Configuration
+A patched nerd font is required to correctly display icons in various plugins that rely on `nvim-web-devicons`. The
+`ripgrep` package provides ultra fast file search and indexing support. If you are running X11 instead of wayland, you
+can omit installing the `xclip` and `xsel` packages.
+
+## Setup
 
 Clone the repository under `~/.config/nvim`:
 ```bash
