@@ -41,6 +41,11 @@ Install and update plugins:
 :Lazy install
 ```
 
+Install and update language servers:
+```bash
+:Mason
+```
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
