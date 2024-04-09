@@ -60,6 +60,34 @@ Install and update language servers:
 :Mason
 ```
 
+## Plugins
+- [Autoclose](https://github.com/m4xshen/autoclose.nvim)
+- [Barbecue](https://github.com/utilyre/barbecue.nvim)
+- [Bufferline](https://github.com/akinsho/bufferline.nvim)
+- [Catpuccin](https://github.com/catppuccin/nvim)
+- [Commentary](https://github.com/tpope/vim-commentary)
+- [CMP](https://github.com/hrsh7th/nvim-cmp)
+- [GOC](https://github.com/rafaelsq/nvim-goc.lua)
+- [Fidget](https://github.com/j-hui/fidget.nvim)
+- [Fugitive](https://github.com/tpope/vim-fugitive)
+- [Git signs](https://github.com/lewis6991/gitsigns.nvim)
+- [Illuminate](https://github.com/RRethy/vim-illuminate)
+- [Indent](https://github.com/lukas-reineke/indent-blankline.nvim)
+- [Leap](https://github.com/ggandor/leap.nvim)
+- [LSP Config](https://github.com/neovim/nvim-lspconfig)
+- [Mason](https://github.com/williamboman/mason.nvim)
+- [Lualine](https://github.com/nvim-lualine/lualine.nvim)
+- [Neoscroll](https://github.com/karb94/neoscroll.nvim)
+- [Neotest](https://github.com/nvim-neotest/neotest)
+- [Scrollbar](https://github.com/petertriho/nvim-scrollbar)
+- [Telescope](https://github.com/nvim-telescope/telescope.nvim)
+- [Todo](https://github.com/folke/todo-comments.nvim)
+- [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- [Trouble](https://github.com/folke/trouble.nvim)
+- [Twilight](https://github.com/folke/twilight.nvim)
+- [Wilder](https://github.com/gelguy/wilder.nvim)
+- [Zenmode](https://github.com/folke/zen-mode.nvim)
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
