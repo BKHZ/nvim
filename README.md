@@ -87,7 +87,3 @@ Install and update language servers:
 - [Twilight](https://github.com/folke/twilight.nvim)
 - [Wilder](https://github.com/gelguy/wilder.nvim)
 - [Zenmode](https://github.com/folke/zen-mode.nvim)
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
