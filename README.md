@@ -53,6 +53,7 @@ $ nvim
 Install and update plugins:
 ```bash
 :Lazy install
+:Lazy update
 ```
 
 Install and update language servers:
