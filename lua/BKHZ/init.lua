@@ -1,5 +1,6 @@
 require("BKHZ.config")
 require("BKHZ.remap")
+require("BKHZ.netrw")
 require("BKHZ.lazy")
 
 local autocmd = vim.api.nvim_create_autocmd

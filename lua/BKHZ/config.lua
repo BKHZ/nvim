@@ -56,10 +56,5 @@ end
 -- Hide intro screen
 vim.opt.shortmess:append "I"
 
--- Netrw sizing
-vim.g.netrw_browse_split = 0
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 45
-
 -- Always enable editorconfig
 vim.g.editorconfig = true
