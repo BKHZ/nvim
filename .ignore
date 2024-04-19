@@ -2,6 +2,7 @@
 
 !.stylua.toml
 !.gitignore
+!.ignore
 
 .assets/
 lazy-lock.json
