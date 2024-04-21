@@ -16,7 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("BKHZ.plugins", {
     change_detection = {
-        notify = true,
+        notify = false,
     },
     install = {
         -- Don't install missing plugins on startup
@@ -28,6 +28,8 @@ require("lazy").setup("BKHZ.plugins", {
         concurrency = 3,
         -- Check for updates every 4 hours
         frequency = 14400,
+        -- Dont notify on neovim start
+        notify = false,
     },
     performance = {
         cache = {
