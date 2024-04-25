@@ -1,3 +1,7 @@
+-- Lazy plugin bootstrap.
+-- Plugin dropin configuration is loaded automatically from the lua/BKHZ directory. If lazy is not yet installed,
+-- the repository will be cloned on nvim start.
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 -- Automatically install lazy.nvim if it isnt setup

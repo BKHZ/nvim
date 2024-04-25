@@ -1,3 +1,5 @@
+-- Editor configuration options.
+
 local config = {
     -- Allow copying to wayland clipboard
     -- clipboard = "unnamedplus",

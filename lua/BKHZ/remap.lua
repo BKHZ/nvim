@@ -1,3 +1,6 @@
+-- Keymaps for internal nvim behaviors.
+-- Plugin specific mappings are in each individual plugins dropin configuration file.
+
 -- Remap leader to spacebar
 vim.g.mapleader = " "
 
