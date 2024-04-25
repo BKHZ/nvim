@@ -4,7 +4,7 @@ return {
         "catppuccin/nvim",
     },
     config = function ()
-        local palette = require("catppuccin.palettes.macchiato")
+        local palette = require("catppuccin.palettes.mocha")
         require("scrollbar").setup {
             show = true,
             show_in_active_only = false,

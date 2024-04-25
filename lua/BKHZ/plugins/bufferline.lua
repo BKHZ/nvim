@@ -10,12 +10,12 @@ return {
     },
     after = "catppuccin",
     config = function ()
-        local palette = require("catppuccin.palettes").get_palette "macchiato"
+        local palette = require("catppuccin.palettes").get_palette "mocha"
         require("bufferline").setup {
             highlights = require("catppuccin.groups.integrations.bufferline").get {
                 styles = { "italic", "bold" },
                 custom = {
-                    macchiato = {
+                    mocha = {
                         background = { fg = palette.text },
                     },
                 }

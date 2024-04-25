@@ -1,5 +1,6 @@
 # Ripgrep ignored files and directories
 
+!.github/
 !.stylua.toml
 !.gitignore
 !.ignore
