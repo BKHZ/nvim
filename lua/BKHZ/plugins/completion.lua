@@ -14,9 +14,6 @@ return {
         -- Luasnip snippets
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
-        -- Snippy snippets
-        -- "dcampos/nvim-snippy",
-        -- "dcampos/cmp-snippy",
     },
 
     config = function ()
@@ -60,7 +57,6 @@ return {
             snippet = {
                 expand = function (args)
                     require("luasnip").lsp_expand(args.body) -- Luasnip snippets
-                    -- require("snippy").expand_snippet(args.body) -- Snippy snippets
                 end,
             },
 
