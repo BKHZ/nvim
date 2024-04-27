@@ -22,10 +22,11 @@ return {
             defaults = {
                 mappings = {
                     i = {
-                        ["<c-t>"] = trouble.open_with_trouble,
+                        ["<C-t>"] = trouble.open_with_trouble,
                     },
                     n = {
-                        ["<c-t>"] = trouble.open_with_trouble,
+                        ["<C-q"] = actions.smart_send_to_qflist + actions.open_qflist,
+                        ["<C-t>"] = trouble.open_with_trouble,
                         ["q"] = actions.close,
                     },
                 }
