@@ -41,8 +41,6 @@ return {
                     },
                 },
                 lualine_x = {
-                    { "encoding" },
-                    { "fileformat" },
                     { "filetype" },
                     {
                         status.updates,

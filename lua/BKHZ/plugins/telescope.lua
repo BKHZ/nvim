@@ -11,6 +11,7 @@ return {
         local telescope = require("telescope")
         local trouble = require("trouble.providers.telescope")
         local actions = require("telescope.actions")
+        local builtin = require("telescope.builtin")
 
         telescope.setup {
             extensions = {
@@ -38,8 +39,6 @@ return {
         -- when autocompleting LSP code actions).
         telescope.load_extension("ui-select")
 
-        local builtin = require("telescope.builtin")
-
         -- File picker
         vim.keymap.set("n", "<leader>f", builtin.find_files, {})
         vim.keymap.set("n", "<C-p>", builtin.git_files, {})
@@ -53,5 +52,11 @@ return {
 
         -- List buffers
         vim.keymap.set("n", "<leader>b", builtin.buffers, {})
+
+        -- Open telescope to neovim configuration directory.
+        -- Autocmd must start with upper case letter.
+        vim.api.nvim_create_user_command("Config", function ()
+            builtin.find_files({cwd="~/.config/nvim"})
+        end, {})
     end
 }
