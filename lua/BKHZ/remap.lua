@@ -29,3 +29,6 @@ vim.api.nvim_set_keymap("n", "<Up>", msg, { noremap = true, silent = false })
 vim.api.nvim_set_keymap("n", "<Down>", msg, { noremap = true, silent = false })
 vim.api.nvim_set_keymap("n", "<Left>", msg, { noremap = true, silent = false })
 vim.api.nvim_set_keymap("n", "<Right>", msg, { noremap = true, silent = false })
+
+-- Buffer management
+vim.keymap.set("n", "<leader>q", ":bdelete<CR>")
