@@ -45,8 +45,8 @@ local config = {
     showmode = false,
     -- Persistent undos
     undofile = true,
-    -- Always show tabs
-    showtabline = 2,
+    -- Disable tabline
+    showtabline = 0,
     -- Dont line wrap long lines
     wrap = false,
 }
