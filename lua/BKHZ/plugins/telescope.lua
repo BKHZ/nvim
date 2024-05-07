@@ -53,6 +53,9 @@ return {
         -- List buffers
         vim.keymap.set("n", "<leader>b", builtin.buffers, {})
 
+        -- Registers
+        vim.keymap.set("n", "<leader>r", builtin.registers, {})
+
         -- Open telescope to neovim configuration directory.
         -- Autocmd must start with upper case letter.
         vim.api.nvim_create_user_command("Config", function ()
