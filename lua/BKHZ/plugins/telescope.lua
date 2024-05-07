@@ -24,6 +24,8 @@ return {
                 mappings = {
                     i = {
                         ["<C-t>"] = trouble.open_with_trouble,
+                        -- Delete buffer from picker float.
+                        ["<C-d>"] = actions.delete_buffer + actions.move_to_top,
                     },
                     n = {
                         ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
@@ -40,7 +42,12 @@ return {
         telescope.load_extension("ui-select")
 
         -- File picker
-        vim.keymap.set("n", "<leader>f", builtin.find_files, {})
+        vim.keymap.set("n", "<leader>f", function ()
+            builtin.find_files {
+                previewer = false,
+            }
+        end, {})
+
         vim.keymap.set("n", "<C-p>", builtin.git_files, {})
         -- Search file contents (ripgrep)
         vim.keymap.set("n", "<leader>F", builtin.live_grep, {})
