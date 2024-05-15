@@ -44,7 +44,8 @@ return {
         -- File picker
         vim.keymap.set("n", "<leader>f", function ()
             builtin.find_files {
-                previewer = false,
+                previewer = true,
+                hidden = true,
             }
         end, {})
 
