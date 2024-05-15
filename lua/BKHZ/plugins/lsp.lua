@@ -54,6 +54,7 @@ return {
                 "cmake",
                 "cssls",
                 "taplo",
+                "zls",
             },
 
             handlers = {
@@ -93,6 +94,11 @@ return {
             filetypes = {
                 "c", "cpp", "proto",
             },
+        }
+
+        -- Zig LSP
+        lspconfig.zls.setup {
+            capabilities = capabilities,
         }
 
         -- Lua LSP
