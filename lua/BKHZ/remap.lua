@@ -32,3 +32,4 @@ vim.api.nvim_set_keymap("n", "<Right>", msg, { noremap = true, silent = false })
 
 -- Buffer management
 vim.keymap.set("n", "<leader>q", ":bdelete<CR>")
+vim.keymap.set("n", "<leader>Q", ":bp\\|bd \\#<Enter>")
