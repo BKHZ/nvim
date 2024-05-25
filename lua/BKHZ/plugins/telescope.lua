@@ -46,6 +46,11 @@ return {
             builtin.find_files {
                 previewer = true,
                 hidden = true,
+                file_ignore_patterns = {
+                    ".git/",
+                    "vendor/",
+                    "node_modules/",
+                }
             }
         end, {})
 
