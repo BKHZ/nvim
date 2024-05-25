@@ -47,9 +47,16 @@ return {
                 previewer = true,
                 hidden = true,
                 file_ignore_patterns = {
+                    -- VCS source directories
                     ".git/",
+                    -- Go packages
                     "vendor/",
+                    -- JS packages
                     "node_modules/",
+                    -- Vim files
+                    "*~",
+                    "*.swp",
+                    "*.swo",
                 }
             }
         end, {})
