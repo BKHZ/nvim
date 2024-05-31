@@ -9,9 +9,11 @@ return {
 
     config = function ()
         local telescope = require("telescope")
-        local trouble = require("trouble.sources.telescope")
         local actions = require("telescope.actions")
         local builtin = require("telescope.builtin")
+
+        local open_with_trouble = require("trouble.sources.telescope").open
+        -- local add_to_trouble = require("trouble.sources.telescope").add
 
         telescope.setup {
             extensions = {
@@ -23,13 +25,13 @@ return {
             defaults = {
                 mappings = {
                     i = {
-                        ["<C-t>"] = trouble.open,
+                        ["<C-t>"] = open_with_trouble,
                         -- Delete buffer from picker float.
                         ["<C-d>"] = actions.delete_buffer + actions.move_to_top,
                     },
                     n = {
                         ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
-                        ["<C-t>"] = trouble.open,
+                        ["<C-t>"] = open_with_trouble,
                         ["q"] = actions.close,
                     },
                 }
