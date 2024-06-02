@@ -1,0 +1,27 @@
+---
+
+name: Lint
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install lua tools
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y lua-check
+      - name: Run lua check
+        run: luacheck .
