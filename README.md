@@ -1,5 +1,7 @@
 # Neovim configuration
 
+![image](https://github.com/BKHZ/nvimrc/assets/50824969/62dd791d-4d14-471d-b40c-84611d01ecf2)
+
 Plugins are managed via `lazy.nvim` and will automatically synchronize on nvim launch. LSP providers are managed via
 `mason`. Autocompletion is provided by `cmp`.
 
