@@ -1,6 +1,6 @@
 # Neovim configuration
 
-![image](https://github.com/BKHZ/nvimrc/assets/50824969/62dd791d-4d14-471d-b40c-84611d01ecf2)
+![image](https://github.com/BKHZ/nvim/assets/50824969/62dd791d-4d14-471d-b40c-84611d01ecf2)
 
 Plugins are managed via `lazy.nvim` and will automatically synchronize on nvim launch. LSP providers are managed via
 `mason`. Autocompletion is provided by `cmp`.
@@ -41,7 +41,7 @@ can omit installing the `xclip` and `xsel` packages, otherwise omit `wl-clipboar
 
 Clone the repository under `~/.config/nvim`:
 ```bash
-$ git clone git@github.com:BKHZ/nvimrc.git ~/.config/nvim
+$ git clone git@github.com:BKHZ/nvim.git ~/.config/nvim
 ```
 
 Create optional legacy vim symlink in your PATH:
