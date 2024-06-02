@@ -20,6 +20,8 @@ Install the below optional system packages:
 
 ```bash
 $ sudo pacman -S ttf-cascadia-code \
+	ttc-iosevka \
+	ttf-iosevka-nerd \
 	ttf-cascadia-code \
 	ttf-cascadia-mono-nerd \
 	diff-so-fancy \
