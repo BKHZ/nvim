@@ -49,7 +49,6 @@ return {
                 "lua_ls",
                 "pyright",
                 "ansiblels",
-                "bashls",
                 "dockerls",
                 "cmake",
                 "cssls",
