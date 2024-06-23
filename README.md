@@ -1,3 +1,5 @@
+[![Lint](https://github.com/BKHZ/nvim/actions/workflows/lint.yml/badge.svg?branch=main)](https://github.com/BKHZ/nvim/actions/workflows/lint.yml)
+
 # Neovim configuration
 
 ![image](https://github.com/BKHZ/nvim/assets/50824969/62dd791d-4d14-471d-b40c-84611d01ecf2)
