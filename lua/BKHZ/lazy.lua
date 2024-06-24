@@ -30,11 +30,17 @@ require("lazy").setup("BKHZ.plugins", {
     checker = {
         enabled = true,
         -- Slow down plugin checks
-        concurrency = 3,
+        concurrency = 2,
         -- Check for updates every 48 hours
         frequency = 172800,
         -- Dont notify on neovim start
         notify = false,
+    },
+    git = {
+        -- Show last 8 commits.
+        log = {"-8"},
+        -- kill clones that take more than 30 seconds.
+        timeout = 30,
     },
     performance = {
         cache = {
