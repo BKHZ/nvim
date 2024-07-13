@@ -9,7 +9,7 @@ return {
             modes = {
                 diagnostics = {
                     -- Automatically open list when diagnostics are detected
-                    auto_open = false,
+                    auto_open = true,
                     -- Automatically close list when no diagnostics are detected
                     auto_close = false,
                     auto_preview = true,
