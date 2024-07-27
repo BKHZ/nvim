@@ -70,7 +70,7 @@ return {
                 ["<C-f>"] = cmp.mapping.scroll_docs(4),
                 ["<C-Space>"] = cmp.mapping.complete(),
                 ["<C-e>"] = cmp.mapping.abort(),
-                ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                ["<CR>"] = cmp.mapping.confirm({ select = false }),
                 ["<S-CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
                 ["<C-CR>"] = function (fallback)
                     cmp.abort()
@@ -112,9 +112,6 @@ return {
                 -- fields = { "kind", "abbr", "menu" },
                 fields = { "menu", "kind", "abbr" },
                 format = function (entry, item)
-                    -- item.menu = entry:get_completion_item().detail
-                    -- return item
-
                     local menu_icon = {
                         nvim_lsp = "λ",
                         luasnip = "⋗",
@@ -123,6 +120,7 @@ return {
                     }
 
                     item.menu = menu_icon[entry.source.name]
+                    -- item.menu = entry:get_completion_item().detail
                     return item
                 end,
             },
