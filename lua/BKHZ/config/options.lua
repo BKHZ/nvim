@@ -49,6 +49,8 @@ local config = {
     showtabline = 0,
     -- Dont line wrap long lines
     wrap = false,
+    -- Round indent
+    shiftround = true
 }
 
 for k, v in pairs(config) do

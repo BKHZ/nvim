@@ -2,18 +2,28 @@
 -- Plugin dropin configuration is loaded automatically from the lua/BKHZ directory. If lazy is not yet installed,
 -- the repository will be cloned on nvim start.
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-
 -- Automatically install lazy.nvim if it isnt setup
-if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+    local out = vim.fn.system({
         "git",
         "clone",
         "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
         "--branch=stable",
+        lazyrepo,
         lazypath,
     })
+
+    if vim.v.shell_error ~= 0 then
+        vim.api.nvim_echo({
+            { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+            { out, "WarningMsg" },
+            { "\nPress any key to exit..." },
+        }, true, {})
+        vim.fn.getchar()
+        os.exit(1)
+    end
 end
 
 ---@diagnostic disable-next-line: undefined-field
@@ -50,6 +60,9 @@ require("lazy").setup("BKHZ.plugins", {
             disabled_plugins = {
                 "tutor",
                 "tohtml",
+                "gzip",
+                "tarPlugin",
+                "zipPlugin"
             },
         },
     },
