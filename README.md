@@ -1,6 +1,5 @@
-[![Lint](https://github.com/BKHZ/nvim/actions/workflows/lint.yml/badge.svg?branch=main)](https://github.com/BKHZ/nvim/actions/workflows/lint.yml)
-
 # Neovim configuration
+[![Lint](https://github.com/BKHZ/nvim/actions/workflows/lint.yml/badge.svg?branch=main)](https://github.com/BKHZ/nvim/actions/workflows/lint.yml)
 
 ![image](https://github.com/BKHZ/nvim/assets/50824969/62dd791d-4d14-471d-b40c-84611d01ecf2)
 
@@ -11,19 +10,13 @@ Plugins are managed via `lazy.nvim` and will automatically synchronize on nvim l
 
 Install NeoVim:
 
-### Arch Linux
-
-```bash
-$ sudo pacman -S neovim \
-	neovim-lspconfig
-```
-
-Install the below optional system packages:
-
 ### ArchLinux
 
 ```bash
-$ sudo pacman -S ttf-cascadia-code \
+$ sudo pacman -S \
+	neovim \
+	ttf-cascadia-code \
+	neovim-lspconfig \
 	ttc-iosevka \
 	ttf-iosevka-nerd \
 	ttf-cascadia-code \
