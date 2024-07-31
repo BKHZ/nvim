@@ -12,16 +12,17 @@ return {
         }
 
         wilder.set_option("renderer", wilder.popupmenu_renderer(
-            wilder.popupmenu_border_theme({
-                -- Make popup transparent
-                pumblend = 20,
-                highlighter = wilder.basic_highlighter(),
-                left = { " ", wilder.popupmenu_devicons() },
-                right = { " ", wilder.popupmenu_scrollbar() },
-                min_width = "100%",
-                min_height = "50%",
-                reverse = 0,
-            })
+        wilder.popupmenu_border_theme({
+            highlighter = wilder.basic_highlighter(),
+            left = {' ', wilder.popupmenu_devicons()},
+            right = {' ', wilder.popupmenu_scrollbar()},
+            -- Make popup transparent
+            pumblend = 30,
+            min_width = '100%',
+            min_height = '30%',
+            max_height = '30%',
+            reverse = 0,
+        })
         ))
     end
 }

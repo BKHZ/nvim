@@ -1,6 +1,6 @@
 return {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.6",
+    tag = "0.1.8",
     dependencies = {
         "nvim-telescope/telescope-ui-select.nvim",
         "nvim-lua/plenary.nvim",
@@ -11,29 +11,30 @@ return {
         local telescope = require("telescope")
         local actions = require("telescope.actions")
         local builtin = require("telescope.builtin")
-
         local open_with_trouble = require("trouble.sources.telescope").open
-        -- local add_to_trouble = require("trouble.sources.telescope").add
 
         telescope.setup {
-            extensions = {
-                ["ui-select"] = {
-                    require("telescope.themes").get_dropdown {}
-                },
-            },
-
             defaults = {
                 mappings = {
                     i = {
                         ["<C-t>"] = open_with_trouble,
                         -- Delete buffer from picker float.
                         ["<C-d>"] = actions.delete_buffer + actions.move_to_top,
+                        ["<C-h>"] = "which_key",
+                        ["<C-v>"] = actions.select_vertical,
+                        ["<C-x>"] = actions.select_horizontal
                     },
                     n = {
                         ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
                         ["<C-t>"] = open_with_trouble,
                         ["q"] = actions.close,
                     },
+                }
+            },
+            pickers = {
+                find_files = {
+                    -- Telescope theme
+                    -- theme = "dropdown"
                 }
             }
         }
@@ -59,7 +60,7 @@ return {
                     "*~",
                     "*.swp",
                     "*.swo",
-                }
+                },
             }
         end, {})
 
