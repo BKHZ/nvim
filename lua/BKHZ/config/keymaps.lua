@@ -56,3 +56,6 @@ map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
 -- Clear search with <esc>
 vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and Clear hlsearch" })
 
+-- Show TODO comments in telescope picker
+map("n", "<leader>o", "<cmd>:TodoTelescope<CR>", {})
+
