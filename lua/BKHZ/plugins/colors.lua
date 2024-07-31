@@ -65,6 +65,7 @@ return {
     },
     {
         "ellisonleao/gruvbox.nvim",
+        enabled = false,
         config = function ()
             require("gruvbox").setup {
                 terminal_colors = true,
@@ -75,6 +76,7 @@ return {
     },
     {
         "folke/tokyonight.nvim",
+        enabled = false,
         config = function ()
             ---@diagnostic disable-next-line: missing-fields
             require("tokyonight").setup {
