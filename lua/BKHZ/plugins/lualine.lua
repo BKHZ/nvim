@@ -12,12 +12,15 @@ return {
         local status = require("lazy.status")
         require("lualine").setup {
             icons_enabled = true,
-            theme = "catppuccin",
+            theme = "auto",
             -- Show a separate status bar per window
             globalstatus = false,
             extensions = {
                 "fugitive",
                 "trouble",
+                "lazy",
+                "mason",
+                "oil"
             },
             sections = {
                 lualine_a = {
