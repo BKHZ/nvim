@@ -20,7 +20,8 @@ return {
                 "trouble",
                 "lazy",
                 "mason",
-                "oil"
+                "oil",
+                "overseer"
             },
             sections = {
                 lualine_a = {
@@ -50,6 +51,7 @@ return {
                         cond = status.has_updates,
                         color = { fg = "#ff9e64" }
                     },
+                    { "overseer" }
                 },
                 lualine_y = {
                     { "progress" }
