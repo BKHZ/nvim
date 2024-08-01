@@ -15,6 +15,8 @@ return {
         -- Luasnip snippets
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
+        -- Icons
+        "onsails/lspkind.nvim"
     },
 
     config = function ()
@@ -24,6 +26,7 @@ return {
         local cmp = require("cmp")
         local cmp_defaults = require("cmp.config.default")()
         local preview = require("actions-preview")
+        local lspkind = require("lspkind")
 
         local has_words_before = function ()
             local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -103,27 +106,46 @@ return {
             }),
 
             window = {
-                completion = cmp.config.window.bordered(),
+                -- completion = cmp.config.window.bordered(),
+                completion = {
+                    winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+                    col_offset = -3,
+                    side_padding = 0,
+                },
                 documentation = cmp.config.window.bordered()
             },
 
+            -- https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#how-to-get-types-on-the-left-and-offset-the-menu
+            -- Better looking completion window.
             formatting = {
-                expandable_indicator = true,
-                -- fields = { "kind", "abbr", "menu" },
-                fields = { "menu", "kind", "abbr" },
-                format = function (entry, item)
-                    local menu_icon = {
-                        nvim_lsp = "λ",
-                        luasnip = "⋗",
-                        buffer = "Ω",
-                        path = "🖫",
-                    }
-
-                    item.menu = menu_icon[entry.source.name]
-                    -- item.menu = entry:get_completion_item().detail
-                    return item
+                fields = { "kind", "abbr", "menu" },
+                expandable_indicator = false,
+                format = function(entry, vim_item)
+                    local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+                    local strings = vim.split(kind.kind, "%s", { trimempty = true })
+                    kind.kind = " " .. (strings[1] or "") .. " "
+                    kind.menu = "    (" .. (strings[2] or "") .. ")"
+                    return kind
                 end,
             },
+
+            -- formatting = {
+            --     expandable_indicator = true,
+            --     -- fields = { "kind", "abbr", "menu" },
+            --     fields = { "menu", "kind", "abbr" },
+            --     format = function (entry, item)
+            --         local menu_icon = {
+            --             nvim_lsp = "λ",
+            --             luasnip = "⋗",
+            --             buffer = "Ω",
+            --             path = "🖫",
+            --         }
+
+            --         item.menu = menu_icon[entry.source.name]
+            --         -- item.menu = entry:get_completion_item().detail
+            --         return item
+            --     end,
+            -- },
 
             completion = {
                 completeopt = "menu,menuone,noinsert",
