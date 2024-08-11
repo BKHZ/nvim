@@ -19,6 +19,8 @@ return {
                     indent_guides = true,
                     multiline = true,
                     max_items = 200,
+                    -- Group results scoped by filename.
+                    group = true,
                 },
             },
         }

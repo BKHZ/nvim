@@ -119,7 +119,7 @@ return {
             -- Better looking completion window.
             formatting = {
                 fields = { "kind", "abbr", "menu" },
-                expandable_indicator = false,
+                expandable_indicator = true,
                 format = function(entry, vim_item)
                     local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
                     local strings = vim.split(kind.kind, "%s", { trimempty = true })
@@ -128,24 +128,6 @@ return {
                     return kind
                 end,
             },
-
-            -- formatting = {
-            --     expandable_indicator = true,
-            --     -- fields = { "kind", "abbr", "menu" },
-            --     fields = { "menu", "kind", "abbr" },
-            --     format = function (entry, item)
-            --         local menu_icon = {
-            --             nvim_lsp = "λ",
-            --             luasnip = "⋗",
-            --             buffer = "Ω",
-            --             path = "🖫",
-            --         }
-
-            --         item.menu = menu_icon[entry.source.name]
-            --         -- item.menu = entry:get_completion_item().detail
-            --         return item
-            --     end,
-            -- },
 
             completion = {
                 completeopt = "menu,menuone,noinsert",
