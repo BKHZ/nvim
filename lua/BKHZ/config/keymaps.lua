@@ -2,21 +2,22 @@
 -- Plugin specific mappings are in each individual plugins dropin configuration file.
 
 local map = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
 -- Remap leader to spacebar
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- Open netrw browser
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+keymap("n", "<leader>pv", vim.cmd.Ex)
 
 -- Yank visually selected text to the system clipboard.
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+keymap({ "n", "v" }, "<leader>y", [["+y]])
 -- Yank text to the end of the line to the system clipboard.
-vim.keymap.set("n", "<leader>Y", [["+Y]])
+keymap("n", "<leader>Y", [["+Y]])
 
 -- Check keymap definition(s) for a given keymap.
-vim.keymap.set("n", "<leader>v", function ()
+keymap("n", "<leader>v", function ()
     vim.cmd(":verbose map " .. vim.fn.input("find keymap: "))
 end)
 
@@ -34,8 +35,8 @@ map("n", "<Left>", msg, { noremap = true, silent = false })
 map("n", "<Right>", msg, { noremap = true, silent = false })
 
 -- Buffer management
-vim.keymap.set("n", "<leader>q", ":bdelete<CR>")
-vim.keymap.set("n", "<leader>Q", ":bp\\|bd \\#<Enter>")
+keymap("n", "<leader>q", ":bdelete<CR>")
+keymap("n", "<leader>Q", ":bp\\|bd \\#<Enter>")
 map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 
@@ -54,7 +55,7 @@ map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move Down" })
 map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move Up" })
 
 -- Clear search with <esc>
-vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and Clear hlsearch" })
+keymap({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and Clear hlsearch" })
 
 -- Show TODO comments in telescope picker
 map("n", "<leader>o", "<cmd>:TodoTelescope<CR>", {})

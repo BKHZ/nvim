@@ -1,6 +1,48 @@
 return {
     {
+        "EdenEast/nightfox.nvim",
+        enabled = true,
+        lazy = false,
+        config = function()
+            require("nightfox").setup {
+                options = {
+                    modules = {
+                        -- Core neovim modules
+                        diagnostic = {
+                            enable = true,
+                        },
+                        native_lsp = {
+                            enable = true,
+                        },
+                        treesitter = true,
+                        -- Custom neovim modules
+                        barbar = true,
+                        cmp = true,
+                        fidget = true,
+                        gitgutter = true,
+                        gitsigns = true,
+                        illuminate = true,
+                        indent_blankline = true,
+                        lazy = true,
+                        leap = {
+                            enable = true,
+                            background = false,
+                            harsh = true,
+                        },
+                        modes = true,
+                        neotest = true,
+                        notify = true,
+                        telescope = true,
+                    },
+                }
+            };
+
+            vim.cmd("colorscheme carbonfox")
+        end
+    },
+    {
         "catppuccin/nvim",
+        enabled = false,
         lazy = false,
         priority = 1000,
         config = function ()

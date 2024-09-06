@@ -1,5 +1,6 @@
 return {
     "folke/zen-mode.nvim",
+    enabled = false,
     config = function ()
         local zenmode = require("zen-mode")
         zenmode.setup {

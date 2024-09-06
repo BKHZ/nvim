@@ -1,5 +1,6 @@
 return {
     "gelguy/wilder.nvim",
+    enabled = true,
     dependencies = {
         "nvim-tree/nvim-web-devicons",
     },

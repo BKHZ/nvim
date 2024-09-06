@@ -1,5 +1,6 @@
 return {
     "folke/twilight.nvim",
+    enabled = true,
     dependencies = {
         "folke/zen-mode.nvim",
     },

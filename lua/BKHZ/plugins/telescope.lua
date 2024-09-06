@@ -1,5 +1,6 @@
 return {
     "nvim-telescope/telescope.nvim",
+    enabled = true,
     tag = "0.1.8",
     dependencies = {
         "nvim-telescope/telescope-ui-select.nvim",

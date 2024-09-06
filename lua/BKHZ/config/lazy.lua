@@ -40,7 +40,7 @@ require("lazy").setup("BKHZ.plugins", {
     checker = {
         enabled = true,
         -- Slow down plugin checks
-        concurrency = 2,
+        concurrency = 4,
         -- Check for updates every 48 hours
         frequency = 172800,
         -- Dont notify on neovim start

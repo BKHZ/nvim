@@ -1,10 +1,12 @@
 return {
     "petertriho/nvim-scrollbar",
+    enabled = true,
     dependencies = {
         "catppuccin/nvim",
+        "EdenEast/nightfox.nvim"
     },
     config = function ()
-        local palette = require("catppuccin.palettes.mocha")
+        local palette = require("nightfox.palette").load()
         require("scrollbar").setup {
             show = true,
             show_in_active_only = false,

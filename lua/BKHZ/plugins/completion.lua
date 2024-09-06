@@ -1,5 +1,6 @@
 return {
     "hrsh7th/nvim-cmp",
+    enabled = true,
     event = "InsertEnter",
 
     dependencies = {
@@ -100,7 +101,7 @@ return {
                 -- Complete neovims Lua runtime API (vim.lsp.*)
                 { name = "nvim_lua",               keyword_length = 2 },
                 -- Source current buffer
-                { name = "buffer",                 keyword_length = 2 },
+                -- { name = "buffer",                 keyword_length = 2 },
                 -- nvim-cmp source for luasnip
                 { name = "luasnip",                keyword_length = 2 },
             }),

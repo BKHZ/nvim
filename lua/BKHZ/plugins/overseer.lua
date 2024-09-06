@@ -1,5 +1,6 @@
 return {
     "stevearc/overseer.nvim",
+    enabled = true,
     dependencies = {
         "nvim-telescope/telescope.nvim"
     },

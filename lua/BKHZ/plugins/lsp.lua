@@ -1,11 +1,10 @@
 return {
     "neovim/nvim-lspconfig",
-
+    enabled = true,
     event = {
         "InsertEnter",
         "CmdlineEnter",
     },
-
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
@@ -13,7 +12,6 @@ return {
         "folke/neodev.nvim",
         "j-hui/fidget.nvim",
     },
-
     config = function ()
         local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
         local lspconfig = require("lspconfig")
@@ -43,7 +41,6 @@ return {
                 "golangci_lint_ls",
                 "rust_analyzer",
                 "clangd",
-                "tsserver",
                 "eslint",
                 "yamlls",
                 "lua_ls",
