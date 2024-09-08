@@ -63,7 +63,8 @@ return {
 
             snippet = {
                 expand = function (args)
-                    require("luasnip").lsp_expand(args.body) -- Luasnip snippets
+                    -- Use luasnip snippets
+                    require("luasnip").lsp_expand(args.body)
                 end,
             },
 
@@ -130,9 +131,10 @@ return {
                 end,
             },
 
-            completion = {
-                completeopt = "menu,menuone,noinsert",
-            },
+            -- Completeopt can mess with correctly showing the most accurate completion result.
+            -- completion = {
+            --     completeopt = "menu,menuone,noinsert",
+            -- },
 
             experimental = {
                 ghost_text = {
