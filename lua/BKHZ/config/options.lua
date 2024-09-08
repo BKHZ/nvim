@@ -35,8 +35,8 @@ local config = {
     sidescrolloff = 8,
     -- Always show the sign columns to avoid unnecessary text movement
     signcolumn = "yes",
-    -- Rulers (yes its not 80 chars, no it's not 1990)
-    colorcolumn = "120",
+    -- Soft max line length
+    colorcolumn = "100",
     -- Highlight current line
     cursorline = true,
     -- Set number column width
