@@ -71,7 +71,7 @@ return {
                     analyses = {
                         unusedparams = true,
                         unusedwrite = true,
-                        fieldalignment = true,
+                        fieldalignment = false,
                     },
                     hints = {
                         parameterNames = true,
