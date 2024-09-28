@@ -36,7 +36,7 @@ local config = {
     -- Always show the sign columns to avoid unnecessary text movement
     signcolumn = "yes",
     -- Soft max line length
-    colorcolumn = "100",
+    colorcolumn = "120",
     -- Highlight current line
     cursorline = true,
     -- Set number column width
