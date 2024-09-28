@@ -59,7 +59,7 @@ return {
         -- Setup CMP plugin
         cmp.setup {
             -- Skip automatically selecting the first item
-            preselect = "None",
+            -- preselect = "None",
 
             snippet = {
                 expand = function (args)
