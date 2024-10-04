@@ -23,7 +23,8 @@ return {
                         ["<C-d>"] = actions.delete_buffer + actions.move_to_top,
                         ["<C-h>"] = "which_key",
                         ["<C-v>"] = actions.select_vertical,
-                        ["<C-x>"] = actions.select_horizontal
+                        ["<C-x>"] = actions.select_horizontal,
+                        ["<Esc>"] = actions.close
                     },
                     n = {
                         ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
@@ -50,9 +51,10 @@ return {
             builtin.find_files {
                 previewer = true,
                 hidden = true,
+                prompt_prefix = " ",
                 file_ignore_patterns = {
                     -- VCS source directories
-                    ".git/",
+                    "%.git/",
                     -- Go packages
                     "vendor/",
                     -- JS packages
