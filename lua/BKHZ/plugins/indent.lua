@@ -30,8 +30,6 @@ return {
         local indentscope = require("mini.indentscope")
         indentscope.setup {
             draw = {
-                -- Disable annoying animations
-                -- animation = indentscope.gen_animation.none(),
                 animation = indentscope.gen_animation.exponential(),
             },
             options = {
