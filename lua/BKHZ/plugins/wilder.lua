@@ -20,8 +20,8 @@ return {
             -- Make popup transparent
             pumblend = 30,
             min_width = '100%',
-            min_height = '30%',
-            max_height = '30%',
+            min_height = '20%',
+            max_height = '20%',
             reverse = 0,
         })
         ))
