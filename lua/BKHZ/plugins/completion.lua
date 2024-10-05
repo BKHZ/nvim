@@ -94,7 +94,7 @@ return {
 
             sources = cmp.config.sources({
                 -- File paths
-                { name = "path" },
+                -- { name = "path" },
                 -- Language server
                 { name = "nvim_lsp",               keyword_length = 3 },
                 -- Function signatures
