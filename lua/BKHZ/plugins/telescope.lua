@@ -16,6 +16,24 @@ return {
 
         telescope.setup {
             defaults = {
+                previewer = true,
+                hidden = true,
+                prompt_prefix = " > ",
+                initial_mode = "insert",
+                theme = "center",
+                sorting_strategy = "ascending",
+                layout_strategy = "horizontal",
+                layout_config = {
+                    horizontal = {
+                        prompt_position = "top",
+                        preview_width = 0.4,
+                    },
+                    -- Limit preview to only 100 characters.
+                    preview_cutoff = 100,
+                },
+                color_devicons = true,
+                winblend = 0,
+                border = {},
                 mappings = {
                     i = {
                         ["<C-t>"] = open_with_trouble,
@@ -49,9 +67,7 @@ return {
         -- File picker
         vim.keymap.set("n", "<leader>f", function ()
             builtin.find_files {
-                previewer = true,
                 hidden = true,
-                prompt_prefix = " ",
                 file_ignore_patterns = {
                     -- VCS source directories
                     "%.git/",
