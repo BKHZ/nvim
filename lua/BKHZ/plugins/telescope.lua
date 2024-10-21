@@ -1,7 +1,7 @@
 return {
     "nvim-telescope/telescope.nvim",
     enabled = true,
-    tag = "0.1.8",
+    branch = "0.1.x",
     dependencies = {
         "nvim-telescope/telescope-ui-select.nvim",
         "nvim-lua/plenary.nvim",
@@ -14,22 +14,45 @@ return {
         local builtin = require("telescope.builtin")
         local open_with_trouble = require("trouble.sources.telescope").open
 
+        -- Create the horizontal fused layout strategy
+        local layout_strategies = require("telescope.pickers.layout_strategies")
+        layout_strategies.horizontal_fused = function(picker, max_columns, max_lines, layout_config)
+            local layout = layout_strategies.horizontal(picker, max_columns, max_lines, layout_config)
+            layout.prompt.title = ""
+            layout.results.title = ""
+            layout.preview.title = ""
+            layout.results.height = layout.results.height + 1
+            layout.results.borderchars = { "─", "│", "─", "│", "╭", "┬", "┤", "├" }
+            layout.preview.borderchars = { "─", "│", "─", " ", "─", "╮", "╯", "─" }
+            layout.prompt.borderchars = { "─", "│", "─", "│", "╭", "╮", "┴", "╰" }
+            return layout
+        end
+
         telescope.setup {
+            pickers = {
+                colorscheme = {
+                    enable_preview = true
+                }
+            },
+            extensions = {
+                ['ui-select'] = {
+                    require('telescope.themes').get_dropdown {}
+                }
+            },
             defaults = {
                 previewer = true,
                 hidden = true,
                 prompt_prefix = " > ",
                 initial_mode = "insert",
                 theme = "center",
+                path_display = { "filename_first" },
                 sorting_strategy = "ascending",
-                layout_strategy = "horizontal",
+                layout_strategy = "horizontal_fused",
                 layout_config = {
                     horizontal = {
-                        prompt_position = "top",
-                        preview_width = 0.4,
+                        prompt_position = "bottom",
+                        preview_width = 0.6,
                     },
-                    -- Limit preview to only 100 characters.
-                    preview_cutoff = 100,
                 },
                 color_devicons = true,
                 winblend = 0,
@@ -51,12 +74,6 @@ return {
                     },
                 }
             },
-            pickers = {
-                find_files = {
-                    -- Telescope theme
-                    -- theme = "dropdown"
-                }
-            }
         }
 
         -- Load UI selection extension
