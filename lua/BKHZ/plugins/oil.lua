@@ -6,8 +6,14 @@ return {
     },
     config = function ()
         require("oil").setup {
+            keymaps = {
+                ["<Esc>"] = { callback = "actions.close", mode = "n" }
+            },
             -- Takeover default netrw explorer
-            default_file_explorer = false,
+            default_file_explorer = true,
+            lsp_file_methods = {
+                enabled = true
+            },
             columns = {
                 "icon",
                 "permissions",
@@ -18,8 +24,8 @@ return {
             },
             float = {
                 padding = 2,
-                max_width = 200,
-                max_height = 50,
+                max_width = 100,
+                max_height = 40,
                 border = "rounded",
                 win_options = {
                     winblend = 0,
