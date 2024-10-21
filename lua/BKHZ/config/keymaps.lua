@@ -60,3 +60,5 @@ keymap({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and Clear hl
 -- Show TODO comments in telescope picker
 map("n", "<leader>o", "<cmd>:TodoTelescope<CR>", {})
 
+-- Remove search highlights
+map("n", ",", "<cmd>:noh<cr>", {})
