@@ -50,8 +50,10 @@ return {
             ),
         }
 
+        -- Code actions popup menu
         vim.keymap.set({"v", "n"}, "<leader>a", preview.code_actions)
 
+        -- LSP kind color formatting groups
         vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#282C34", fg = "NONE" })
         vim.api.nvim_set_hl(0, "Pmenu", { fg = "#C5CDD9", bg = "#22252A" })
         vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { fg = "#7E8294", bg = "NONE", strikethrough = true })
@@ -145,19 +147,18 @@ return {
                 -- File paths
                 -- { name = "path" },
                 -- Language server
-                { name = "nvim_lsp",               keyword_length = 3 },
+                { name = "nvim_lsp", keyword_length = 3 },
                 -- Function signatures
-                { name = "nvim_lsp_signature_help" },
+                -- { name = "nvim_lsp_signature_help" },
                 -- Complete neovims Lua runtime API (vim.lsp.*)
-                { name = "nvim_lua",               keyword_length = 2 },
+                { name = "nvim_lua", keyword_length = 2 },
                 -- Source current buffer
-                -- { name = "buffer",                 keyword_length = 2 },
+                -- { name = "buffer", keyword_length = 2 },
                 -- nvim-cmp source for luasnip
-                { name = "luasnip",                keyword_length = 2 },
+                { name = "luasnip", keyword_length = 2 },
             }),
 
             window = {
-                -- completion = cmp.config.window.bordered(),
                 completion = {
                     winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
                     col_offset = -3,
@@ -172,10 +173,18 @@ return {
                 fields = { "kind", "abbr", "menu" },
                 expandable_indicator = true,
                 format = function(entry, vim_item)
-                    local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+                    local kind = lspkind.cmp_format({
+                        mode = 'symbol_text',
+                        -- Requires nerd-fonts font
+                        preset = 'default',
+                        maxwidth = 100,
+                        ellipsis_char = '...',
+                        show_labelDetails = false,
+                    })(entry, vim_item)
                     local strings = vim.split(kind.kind, "%s", { trimempty = true })
+
                     kind.kind = " " .. (strings[1] or "") .. " "
-                    kind.menu = "    (" .. (strings[2] or "") .. ")"
+                    kind.menu = "               [" .. (strings[2] or "") .. "]"
                     return kind
                 end,
             },
