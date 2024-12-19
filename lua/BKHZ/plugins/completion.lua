@@ -17,7 +17,9 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         -- Icons
-        "onsails/lspkind.nvim"
+        "onsails/lspkind.nvim",
+        -- AI
+        "zbirenbaum/copilot.lua",
     },
 
     config = function ()
@@ -124,10 +126,14 @@ return {
                     end
                 end),
                 ["<Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
+                    --- Prefer completion order for <Tab> using copilot, CMP then luasnip
+                    local copilot = require('copilot.suggestion')
+                    if copilot.is_visible() then
+                        copilot.accept()
+                    elseif cmp.visible() then
                         cmp.select_next_item()
-                    elseif luasnip.locally_jumpable(1) then
-                        luasnip.jump(1)
+                    elseif luasnip.expand_or_locally_jumpable() then
+                        luasnip.expand_or_jump()
                     else
                         fallback()
                     end

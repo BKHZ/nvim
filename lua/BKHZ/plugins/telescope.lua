@@ -6,6 +6,7 @@ return {
         "nvim-telescope/telescope-ui-select.nvim",
         "nvim-lua/plenary.nvim",
         "folke/trouble.nvim",
+        -- "nvim-telescope/telescope-fzf-native.nvim",
     },
 
     config = function ()
@@ -75,6 +76,9 @@ return {
                 }
             },
         }
+
+        -- Load FZF sorting extension for better file sort.
+        -- telescope.load_extension('fzf')
 
         -- Load UI selection extension
         -- This extension allows neovim to use telescope based UI menus for rendering internal windows (i.e. lsp.buf

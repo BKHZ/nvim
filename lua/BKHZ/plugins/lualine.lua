@@ -22,7 +22,8 @@ return {
                 "lazy",
                 "mason",
                 "oil",
-                "overseer"
+                "overseer",
+                "quickfix"
             },
             sections = {
                 lualine_a = {
