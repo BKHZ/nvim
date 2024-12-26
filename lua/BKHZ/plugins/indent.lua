@@ -1,5 +1,6 @@
 return {
     "lukas-reineke/indent-blankline.nvim",
+    version = false,
     enabled = true,
     dependencies = {
         { "echasnovski/mini.indentscope", version = "*" },

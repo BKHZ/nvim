@@ -24,9 +24,11 @@ return {
             },
             float = {
                 padding = 2,
-                max_width = 100,
-                max_height = 40,
-                border = "rounded",
+                max_width = 0,
+                min_width = { 40, 0.4 },
+                max_height = 0,
+                min_height = { 5, 0.1 },
+                border = "none",
                 win_options = {
                     winblend = 0,
                 }

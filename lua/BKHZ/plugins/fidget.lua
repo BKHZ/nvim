@@ -7,6 +7,9 @@ return {
                 ignore_done_already = false,
                 ignore_empty_message = false,
                 display = {
+                    render_limit = 16,
+                    -- How long messages should stay visible after completion
+                    done_ttl = 5,
                     progress_icon = {
                         pattern = "dots",
                         period = 1,
@@ -19,8 +22,9 @@ return {
                 },
                 window = {
                     border = "none",
-                    winblend = 0,
-                    x_padding = 3,
+                    relative = "editor",
+                    winblend = 30,
+                    x_padding = 1,
                     y_padding = 1,
                 },
             },
