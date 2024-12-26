@@ -12,18 +12,12 @@ return {
     config = function ()
         local status = require("lazy.status")
         require("lualine").setup {
-            icons_enabled = true,
-            theme = "auto",
-            -- Show a separate status bar per window
-            globalstatus = false,
-            extensions = {
-                "fugitive",
-                "trouble",
-                "lazy",
-                "mason",
-                "oil",
-                "overseer",
-                "quickfix"
+            options = {
+                icons_enabled = true,
+                theme = 'powerline',
+                component_separators = '',
+                section_separators = '',
+                globalstatus = false,
             },
             sections = {
                 lualine_a = {
@@ -31,7 +25,6 @@ return {
                 },
                 lualine_b = {
                     { "branch" },
-                    { "diff" },
                     {
                         "diagnostics",
                         sources = { "nvim_lsp" },
@@ -42,18 +35,18 @@ return {
                 lualine_c = {
                     {
                         "filename",
-                        -- Filename and parent dir, with tilde as the home directory
                         path = 4,
-                    },
+                    }
                 },
                 lualine_x = {
+                    { "encoding" },
+                    { "fileformat" },
                     { "filetype" },
                     {
                         status.updates,
                         cond = status.has_updates,
                         color = { fg = "#ff9e64" }
                     },
-                    { "overseer" }
                 },
                 lualine_y = {
                     { "progress" }
@@ -61,6 +54,10 @@ return {
                 lualine_z = {
                     { "location" },
                 }
+            },
+            extensions = {
+                "fugitive",
+                "trouble",
             },
         }
     end

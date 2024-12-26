@@ -20,7 +20,12 @@ return {
             },
         },
         filetypes = {
+            yaml = false,
             markdown = false,
+            help = false,
+            gitcommit = false,
+            gitrebase = false,
+            ["."] = false,
         }
     },
     config = function(_, opts)

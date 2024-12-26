@@ -1,67 +1,37 @@
 return {
     "nvim-telescope/telescope.nvim",
     enabled = true,
-    branch = "0.1.x",
+    -- branch = "0.1.x",
     dependencies = {
         "nvim-telescope/telescope-ui-select.nvim",
         "nvim-lua/plenary.nvim",
         "folke/trouble.nvim",
-        -- "nvim-telescope/telescope-fzf-native.nvim",
     },
 
     config = function ()
         local telescope = require("telescope")
         local actions = require("telescope.actions")
         local builtin = require("telescope.builtin")
+        local themes = require("telescope.themes")
         local open_with_trouble = require("trouble.sources.telescope").open
 
-        -- Create the horizontal fused layout strategy
-        local layout_strategies = require("telescope.pickers.layout_strategies")
-        layout_strategies.horizontal_fused = function(picker, max_columns, max_lines, layout_config)
-            local layout = layout_strategies.horizontal(picker, max_columns, max_lines, layout_config)
-            layout.prompt.title = ""
-            layout.results.title = ""
-            layout.preview.title = ""
-            layout.results.height = layout.results.height + 1
-            layout.results.borderchars = { "─", "│", "─", "│", "╭", "┬", "┤", "├" }
-            layout.preview.borderchars = { "─", "│", "─", " ", "─", "╮", "╯", "─" }
-            layout.prompt.borderchars = { "─", "│", "─", "│", "╭", "╮", "┴", "╰" }
-            return layout
-        end
-
         telescope.setup {
-            pickers = {
-                colorscheme = {
-                    enable_preview = true
-                }
-            },
-            extensions = {
-                ['ui-select'] = {
-                    require('telescope.themes').get_dropdown {}
-                }
-            },
-            defaults = {
+            -- Apply ivy theme for all pickers
+            -- https://github.com/nvim-telescope/telescope.nvim/issues/938#issuecomment-877539724
+            defaults = themes.get_ivy {
                 previewer = true,
-                hidden = true,
-                prompt_prefix = " > ",
+                hidden = false,
                 initial_mode = "insert",
-                theme = "center",
-                path_display = { "filename_first" },
-                sorting_strategy = "ascending",
-                layout_strategy = "horizontal_fused",
-                layout_config = {
-                    horizontal = {
-                        prompt_position = "bottom",
-                        preview_width = 0.6,
-                    },
+                path_display = {
+                    -- Show file base name first with remainder path at the end
+                    "filename_first",
                 },
+                sorting_strategy = "ascending",
                 color_devicons = true,
-                winblend = 0,
-                border = {},
+                winblend = 20,
                 mappings = {
                     i = {
                         ["<C-t>"] = open_with_trouble,
-                        -- Delete buffer from picker float.
                         ["<C-d>"] = actions.delete_buffer + actions.move_to_top,
                         ["<C-h>"] = "which_key",
                         ["<C-v>"] = actions.select_vertical,
@@ -75,10 +45,17 @@ return {
                     },
                 }
             },
+            pickers = {
+                colorscheme = {
+                    enable_preview = true
+                },
+            },
+            extensions = {
+                ['ui-select'] = {
+                    require('telescope.themes').get_ivy {}
+                }
+            },
         }
-
-        -- Load FZF sorting extension for better file sort.
-        -- telescope.load_extension('fzf')
 
         -- Load UI selection extension
         -- This extension allows neovim to use telescope based UI menus for rendering internal windows (i.e. lsp.buf
