@@ -29,6 +29,7 @@ return {
             }
         }
 
+        ---@diagnostic disable-next-line: missing-fields
         require("neodev").setup {
             lspconfig = true,
         }
