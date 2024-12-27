@@ -2,7 +2,6 @@ return {
     "petertriho/nvim-scrollbar",
     enabled = true,
     dependencies = {
-        "catppuccin/nvim",
         "EdenEast/nightfox.nvim"
     },
     config = function ()
