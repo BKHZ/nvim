@@ -6,14 +6,20 @@
 Plugins are managed via `lazy.nvim` and will automatically synchronize on nvim launch. LSP providers are managed via
 `mason`. Autocompletion is provided by `cmp`.
 
-## Packages
-
-Install NeoVim:
+## Dependencies
 
 ### ArchLinux
 
+> [!NOTE]
+> A patched nerd font is required to correctly display icons in various plugins that rely on `nvim-web-devicons`.
+
 ```bash
 $ sudo pacman -S \
+	git \
+	curl \
+	unzip \
+	tar \
+	gzip \
 	neovim \
 	neovim-lspconfig \
 	diff-so-fancy \
@@ -22,9 +28,6 @@ $ sudo pacman -S \
 	otf-monaspace-nerd \
 	wl-clipboard
 ```
-
-> [!NOTE]
-> A patched nerd font is required to correctly display icons in various plugins that rely on `nvim-web-devicons`.
 
 ## Setup
 
