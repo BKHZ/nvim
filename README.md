@@ -15,33 +15,22 @@ Install NeoVim:
 ```bash
 $ sudo pacman -S \
 	neovim \
-	ttf-cascadia-code \
 	neovim-lspconfig \
-	ttc-iosevka \
-	ttf-iosevka-nerd \
-	ttf-cascadia-code \
-	ttf-cascadia-mono-nerd \
 	diff-so-fancy \
 	ripgrep \
-	wl-clipboard \
-	xclip \
-	xsel
+	otf-monaspace \
+	otf-monaspace-nerd \
+	wl-clipboard
 ```
 
-A patched nerd font is required to correctly display icons in various plugins that rely on `nvim-web-devicons`. The
-`ripgrep` package provides ultra fast file search and indexing support. If you are running Wayland instead of X11, you
-can omit installing the `xclip` and `xsel` packages, otherwise omit `wl-clipboard`.
+> [!NOTE]
+> A patched nerd font is required to correctly display icons in various plugins that rely on `nvim-web-devicons`.
 
 ## Setup
 
 Clone the repository under `~/.config/nvim`:
 ```bash
 $ git clone git@github.com:BKHZ/nvim.git ~/.config/nvim
-```
-
-Create optional legacy vim symlink in your PATH:
-```bash
-$ ln -fs /usr/bin/nvim /usr/local/bin/vim
 ```
 
 Start neovim:
@@ -51,8 +40,7 @@ $ nvim
 
 Install and update plugins:
 ```bash
-:Lazy install
-:Lazy update
+:Lazy
 ```
 
 Install and update language servers:
