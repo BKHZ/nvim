@@ -13,8 +13,8 @@ return {
         local status = require("lazy.status")
         require("lualine").setup {
             options = {
-                icons_enabled = true,
-                theme = 'powerline',
+                icons_enabled = false,
+                theme = 'auto',
                 component_separators = '',
                 section_separators = '',
                 globalstatus = false,
@@ -25,14 +25,14 @@ return {
                 },
                 lualine_b = {
                     { "branch" },
+                },
+                lualine_c = {
                     {
                         "diagnostics",
                         sources = { "nvim_lsp" },
                         colored = true,
                         always_visible = false,
                     },
-                },
-                lualine_c = {
                     {
                         "filename",
                         path = 4,
@@ -49,7 +49,7 @@ return {
                     },
                 },
                 lualine_y = {
-                    { "progress" }
+                    { "progress", separator = " ", padding = { left = 1, right = 1 } }
                 },
                 lualine_z = {
                     { "location" },
