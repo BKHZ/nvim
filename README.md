@@ -24,8 +24,7 @@ $ sudo pacman -S \
 	neovim-lspconfig \
 	diff-so-fancy \
 	ripgrep \
-	otf-monaspace \
-	otf-monaspace-nerd \
+	ttf-cascadia-code-nerd \
 	wl-clipboard
 ```
 
