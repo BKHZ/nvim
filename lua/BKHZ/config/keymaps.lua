@@ -2,7 +2,6 @@
 -- Plugin specific mappings are in each individual plugins dropin configuration file.
 
 local map = vim.api.nvim_set_keymap
-local vmap = vim.api.nvim_set_vmap
 local keymap = vim.keymap.set
 
 -- Remap leader to spacebar
