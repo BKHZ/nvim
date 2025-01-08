@@ -2,6 +2,7 @@
 -- Plugin specific mappings are in each individual plugins dropin configuration file.
 
 local map = vim.api.nvim_set_keymap
+local vmap = vim.api.nvim_set_vmap
 local keymap = vim.keymap.set
 
 -- Remap leader to spacebar
@@ -62,3 +63,7 @@ map("n", "<leader>o", "<cmd>:TodoTelescope<CR>", {})
 
 -- Remove search highlights
 map("n", ",", "<cmd>:noh<cr>", {})
+
+-- Visual indenting
+map("v", "<Tab>", ">gv", { desc = "Indent Right" })
+map("v", "<S-Tab>", "<gv", { desc = "Indent Left" })
