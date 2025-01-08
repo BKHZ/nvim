@@ -6,6 +6,7 @@ return {
         config = function()
             require("nightfox").setup {
                 options = {
+                    transparent = false,
                     modules = {
                         diagnostic = {
                             enable = true,

@@ -7,6 +7,7 @@ return {
         "tpope/vim-fugitive",
         "folke/trouble.nvim",
         "folke/lazy.nvim",
+        "EdenEast/nightfox.nvim",
     },
 
     config = function ()
