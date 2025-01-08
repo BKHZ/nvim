@@ -39,6 +39,7 @@ return {
             -- These are the language servers that we want automatically installed.
             ensure_installed = {
                 "gopls",
+                "templ",
                 "golangci_lint_ls",
                 "rust_analyzer",
                 "clangd",
@@ -62,6 +63,14 @@ return {
                     }
                 end,
             }
+        }
+
+        -- Templ LSP
+        lspconfig.templ.setup {
+            capabilities = capabilities,
+            filetypes = {
+                "templ",
+            },
         }
 
         -- Go LSP

@@ -13,7 +13,7 @@ return {
         local status = require("lazy.status")
         require("lualine").setup {
             options = {
-                icons_enabled = false,
+                icons_enabled = true,
                 theme = 'auto',
                 component_separators = '',
                 section_separators = '',

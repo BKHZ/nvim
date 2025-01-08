@@ -27,7 +27,7 @@ return {
                             background = false,
                             harsh = true,
                         },
-                        modes = false,
+                        modes = true,
                         neotest = true,
                         notify = true,
                         telescope = true,

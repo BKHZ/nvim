@@ -36,6 +36,7 @@ return {
                 "gitignore",
                 "fish",
                 "css",
+                "templ",
             },
 
             -- Install parsers synchronously (only applied to `ensure_installed`)
