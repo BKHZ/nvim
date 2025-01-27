@@ -111,6 +111,33 @@ return {
             }
         }
 
+        -- GolangCI Lint LSP
+        lspconfig.golangci_lint_ls.setup {
+            capabilities = capabilities,
+            settings = {
+                gopls = {
+                    gofumpt = true,
+                }
+            },
+            flags = {
+                debounce_text_changes = 150,
+            }
+        }
+
+        -- Rust LSP
+        lspconfig.rust_analyzer.setup {
+            capabilities = capabilities,
+            settings = {
+                ["rust-analyzer"] = {
+                    inlayHints = {
+                        chainingHints = true,
+                        typeHints = true,
+                        parameterHints = true,
+                    },
+                }
+            }
+        }
+
         -- Clang LSP
         lspconfig.clangd.setup {
             capabilities = capabilities,

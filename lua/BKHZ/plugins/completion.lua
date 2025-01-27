@@ -87,6 +87,7 @@ return {
         vim.api.nvim_set_hl(0, "CmpItemKindInterface", { fg = "#D8EEEB", bg = "#58B5A8" })
         vim.api.nvim_set_hl(0, "CmpItemKindColor", { fg = "#D8EEEB", bg = "#58B5A8" })
         vim.api.nvim_set_hl(0, "CmpItemKindTypeParameter", { fg = "#D8EEEB", bg = "#58B5A8" })
+        vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg = "#000000", bg = "#6CC644"})
 
         -- Setup CMP plugin
         cmp.setup {
@@ -150,18 +151,19 @@ return {
             }),
 
             sources = cmp.config.sources({
+                { name = "copilot", group_index = 2 },
                 -- File paths
                 -- { name = "path" },
                 -- Language server
-                { name = "nvim_lsp", keyword_length = 3 },
+                { name = "nvim_lsp", keyword_length = 3, group_index = 2 },
                 -- Function signatures
                 -- { name = "nvim_lsp_signature_help" },
                 -- Complete neovims Lua runtime API (vim.lsp.*)
-                { name = "nvim_lua", keyword_length = 2 },
+                { name = "nvim_lua", keyword_length = 2, group_index = 2 },
                 -- Source current buffer
                 -- { name = "buffer", keyword_length = 2 },
                 -- nvim-cmp source for luasnip
-                { name = "luasnip", keyword_length = 2 },
+                { name = "luasnip", keyword_length = 2, group_index = 2 },
             }),
 
             window = {
@@ -186,6 +188,9 @@ return {
                         maxwidth = 100,
                         ellipsis_char = '...',
                         show_labelDetails = false,
+                        symbol_map = {
+                            Copilot = "",
+                        },
                     })(entry, vim_item)
                     local strings = vim.split(kind.kind, "%s", { trimempty = true })
 

@@ -12,12 +12,15 @@ return {
         cmd = 'Copilot',
         build = ':Copilot auth',
         event = 'InsertEnter',
+        dependencies = {
+            "zbirenbaum/copilot-cmp",
+        },
         opts = {
             panel = {
                 enabled = false,
             },
             suggestion = {
-                enabled = true,
+                enabled = false,
                 auto_trigger = false,
                 keymap = {
                     accept = false,
@@ -34,6 +37,10 @@ return {
                 help = false,
                 gitcommit = false,
                 gitrebase = false,
+                go = true,
+                typescript = true,
+                rust = true,
+                cpp = true,
                 ["."] = false,
             }
         },
@@ -43,6 +50,7 @@ return {
             local luasnip = require('luasnip')
 
             require('copilot').setup(opts)
+            require('copilot_cmp').setup {}
 
             local function set_trigger(trigger)
                 vim.b.copilot_suggestion_auto_trigger = trigger
@@ -67,6 +75,9 @@ return {
                     set_trigger(not luasnip.expand_or_locally_jumpable())
                 end,
             })
+
+            vim.keymap.set("n", "<leader>cpe", ":Copilot enable<cr>", { silent = true, noremap = true })
+            vim.keymap.set("n", "<leader>cpd", ":Copilot disable<cr>", { silent = true, noremap = true })
         end
     }
 }
