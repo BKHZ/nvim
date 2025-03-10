@@ -18,8 +18,6 @@ return {
         "saadparwaiz1/cmp_luasnip",
         -- Icons
         "onsails/lspkind.nvim",
-        -- AI
-        "zbirenbaum/copilot.lua",
     },
 
     config = function ()
@@ -127,11 +125,7 @@ return {
                     end
                 end),
                 ["<Tab>"] = cmp.mapping(function(fallback)
-                    --- Prefer completion order for <Tab> using copilot, CMP then luasnip
-                    local copilot = require('copilot.suggestion')
-                    if copilot.is_visible() then
-                        copilot.accept()
-                    elseif cmp.visible() then
+                    if cmp.visible() then
                         cmp.select_next_item()
                     elseif luasnip.expand_or_locally_jumpable() then
                         luasnip.expand_or_jump()
@@ -151,7 +145,6 @@ return {
             }),
 
             sources = cmp.config.sources({
-                { name = "copilot", group_index = 2 },
                 -- File paths
                 -- { name = "path" },
                 -- Language server
