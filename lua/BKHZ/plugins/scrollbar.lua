@@ -2,10 +2,11 @@ return {
     "petertriho/nvim-scrollbar",
     enabled = true,
     dependencies = {
-        "EdenEast/nightfox.nvim"
+        "rebelot/kanagawa.nvim"
     },
     config = function ()
-        local palette = require("nightfox.palette").load()
+        local colors = require("kanagawa.colors").setup()
+
         require("scrollbar").setup {
             show = true,
             show_in_active_only = false,
@@ -14,7 +15,8 @@ return {
             throttle_ms = 100,
             folds = 1000,
             handle = {
-                color = palette.overlay0,
+                color = colors.palette.waveAqua1,
+
                 blend = 50,
                 highlight = "CursorColumn",
                 hide_if_all_visible = true,
