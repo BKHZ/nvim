@@ -4,10 +4,21 @@ return {
     dependencies = {
         "nvim-tree/nvim-web-devicons",
     },
+    opts = {},
     config = function ()
         local trouble = require("trouble")
+        ---@diagnostic disable-next-line: missing-fields
         trouble.setup {
             modes = {
+                test = {
+                    mode = "diagnostics",
+                    preview = {
+                        type = "split",
+                        relative = "win",
+                        position = "right",
+                        size = 0.3,
+                    },
+                },
                 diagnostics = {
                     -- Automatically open list when diagnostics are detected
                     auto_open = true,
