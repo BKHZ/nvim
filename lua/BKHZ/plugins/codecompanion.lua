@@ -15,7 +15,7 @@ return {
                                 -- Always show at top of chat buffer
                                 order = 1,
                                 default = "claude-3.7-sonnet",
-                                choices = {
+                        choices = {
                                     "claude-3.5-sonnet",
                                     "claude-3.7-sonnet",
                                     "claude-3.7-sonnet-thought"
@@ -92,6 +92,7 @@ return {
                         border = "single",
                         relative = "editor",
                         full_height = true,
+                        width = 0.25,
                         opts = {
                             breakindent = true,
                             wrap = true,
@@ -120,5 +121,8 @@ return {
                 }
             }
         }
-    end
+    end,
+
+    -- Toggle code companion panel
+    vim.keymap.set("n", "<leader>cc", ":CodeCompanionChat Toggle<cr>", { silent = true, noremap = true })
 }
