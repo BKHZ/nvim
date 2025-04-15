@@ -24,7 +24,7 @@ $ sudo pacman -S \
 	neovim-lspconfig \
 	diff-so-fancy \
 	ripgrep \
-	ttf-cascadia-code-nerd \
+	ttf-agave-nerd \
 	wl-clipboard
 ```
 
