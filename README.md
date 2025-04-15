@@ -40,14 +40,12 @@ Create development plugins directory:
 $ mkdir -p ~/src/BKHZ/nvim/plugins
 ```
 
-Start neovim: ```bash $ nvim ```
-
 Install and update plugins:
-```bash
+```
 :Lazy
 ```
 
 Install and update language servers:
-```bash
+```
 :Mason
 ```
