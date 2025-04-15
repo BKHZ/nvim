@@ -1,0 +1,15 @@
+---
+
+services:
+  nvim:
+    image: ghcr.io/bkhz/nvim:latest
+    container_name: nvim
+    hostname: nvim.local
+    tty: true
+    volumes:
+      - type: bind
+        source: ~/.config/nvim
+        target: /root/.config/nvim
+      - type: bind
+        source: ~/.config/github-copilot/apps.json
+        target: /root/.config/github-copilot/apps.json

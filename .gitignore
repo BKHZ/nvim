@@ -1,0 +1,4 @@
+# Git ignored files and directories
+
+# Docker
+compose.override.yml

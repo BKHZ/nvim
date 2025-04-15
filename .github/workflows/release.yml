@@ -1,0 +1,43 @@
+---
+
+name: Release
+
+concurrency:
+  group: release
+  cancel-in-progress: true
+
+env:
+  DOCKER_IMAGE: ghcr.io/bkhz/nvim:latest
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  container:
+    name: Container
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' && github.repository_owner == 'BKHZ' }}
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Build container
+        run: |
+          docker build \
+            --file Dockerfile \
+            --tag ${{ env.DOCKER_IMAGE }} .
+      - name: Push container
+        run: |
+          docker push ${{ env.DOCKER_IMAGE }}
+      - name: Cleanup old registry containers
+        uses: actions/delete-package-versions@v4
+        with:
+          package-name: nvim
+          package-type: container
+          min-versions-to-keep: 1

@@ -1,0 +1,13 @@
+# Docker ignored files and directories
+
+.gitignore
+.git/
+.github/
+README.md
+Makefile
+.stylua.toml
+.luacheckrc
+.ignore
+.editorconfig
+Dockerfile
+.dockerignore
