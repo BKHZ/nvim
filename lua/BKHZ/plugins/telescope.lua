@@ -1,7 +1,7 @@
 return {
     {
         "BKHZ/telescope-conflicts.nvim",
-        enabled = true,
+        enabled = false,
         dev = true,
     },
     {

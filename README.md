@@ -13,7 +13,7 @@ Plugins are managed via `lazy.nvim` and will automatically synchronize on nvim l
 > [!NOTE]
 > A patched nerd font is required to correctly display icons in various plugins that rely on `nvim-web-devicons`.
 
-```bash
+```
 $ sudo pacman -S \
 	git \
 	curl \
@@ -31,14 +31,16 @@ $ sudo pacman -S \
 ## Setup
 
 Clone the repository under `~/.config/nvim`:
-```bash
+```
 $ git clone git@github.com:BKHZ/nvim.git ~/.config/nvim
 ```
 
-Start neovim:
-```bash
-$ nvim
+Create development plugins directory:
 ```
+$ mkdir -p ~/src/BKHZ/nvim/plugins
+```
+
+Start neovim: ```bash $ nvim ```
 
 Install and update plugins:
 ```bash
