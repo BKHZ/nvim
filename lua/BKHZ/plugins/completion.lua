@@ -18,6 +18,8 @@ return {
         "saadparwaiz1/cmp_luasnip",
         -- Icons
         "onsails/lspkind.nvim",
+        -- Completion source plugins
+        "zbirenbaum/copilot-cmp"
     },
 
     config = function ()
@@ -29,6 +31,7 @@ return {
         local preview = require("actions-preview")
         local lspkind = require("lspkind")
         local luasnip = require("luasnip")
+        local copilot = require("copilot.suggestion")
 
         -- Setup code actions preview plugin
         preview.setup {
@@ -87,6 +90,14 @@ return {
         vim.api.nvim_set_hl(0, "CmpItemKindTypeParameter", { fg = "#D8EEEB", bg = "#58B5A8" })
         vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg = "#000000", bg = "#6CC644"})
 
+        local has_words_before = function()
+            if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+                return false
+            end
+            local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+            return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+        end
+
         -- Setup CMP plugin
         cmp.setup {
             -- Skip automatically selecting the first item
@@ -125,14 +136,16 @@ return {
                     end
                 end),
                 ["<Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_next_item()
+                    if copilot.is_visible() then
+                        copilot.accept()
+                    elseif cmp.visible() and has_words_before() then
+                        cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
                     elseif luasnip.expand_or_locally_jumpable() then
                         luasnip.expand_or_jump()
                     else
                         fallback()
                     end
-                end, { "i", "s" }),
+                end),
                 ["<S-Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
                         cmp.select_prev_item()
@@ -145,6 +158,8 @@ return {
             }),
 
             sources = cmp.config.sources({
+                -- Copilot sources
+                { name = "Copilot", group_index = 2 },
                 -- File paths
                 -- { name = "path" },
                 -- Language server

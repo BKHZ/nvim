@@ -37,5 +37,8 @@ return {
                 vim.keymap.set("n", "<leader>u", ":Git pull -u upstream ", opts)
             end
         })
+
+        -- Git command aliases
+        vim.cmd([[cab gs Git status]])
     end
 }

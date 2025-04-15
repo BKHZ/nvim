@@ -17,13 +17,17 @@ return {
                 },
             },
             notification = {
+                -- Override vim.notify()
+                override_vim_notify = true,
+                -- Set minimum logging level
+                filter = vim.log.levels.INFO,
                 view = {
                     stack_upwards = true,
                 },
                 window = {
                     border = "none",
                     relative = "editor",
-                    winblend = 30,
+                    winblend = 10,
                     x_padding = 1,
                     y_padding = 1,
                 },

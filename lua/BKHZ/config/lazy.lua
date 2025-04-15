@@ -30,6 +30,12 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("BKHZ.plugins", {
+    dev = {
+        -- directory where you store your local plugin projects
+        path = "~/src/BKHZ/nvim/plugins",
+        -- patterns to match when searching for plugins in dev.path
+        -- patterns = { "BKHZ" }, -- For LazyVim plugins
+    },
     change_detection = {
         notify = false,
     },
@@ -47,8 +53,8 @@ require("lazy").setup("BKHZ.plugins", {
         notify = false,
     },
     git = {
-        -- Show last 8 commits.
-        log = {"-8"},
+        -- Show last 4 commits.
+        log = {"-4"},
         -- kill clones that take more than 30 seconds.
         timeout = 30,
     },

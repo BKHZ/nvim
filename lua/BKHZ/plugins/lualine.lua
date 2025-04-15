@@ -7,7 +7,7 @@ return {
         "tpope/vim-fugitive",
         "folke/trouble.nvim",
         "folke/lazy.nvim",
-        "EdenEast/nightfox.nvim",
+        "catppuccin/nvim",
     },
 
     config = function ()
@@ -15,7 +15,7 @@ return {
         require("lualine").setup {
             options = {
                 icons_enabled = true,
-                theme = 'auto',
+                theme = 'catppuccin',
                 component_separators = '',
                 section_separators = '',
                 globalstatus = false,

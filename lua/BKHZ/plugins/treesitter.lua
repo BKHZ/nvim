@@ -27,7 +27,6 @@ return {
                 "vimdoc",
                 "query",
                 "toml",
-                "yaml",
                 "json",
                 "gdscript",
                 "gdshader",
@@ -37,6 +36,9 @@ return {
                 "fish",
                 "css",
                 "templ",
+                "markdown",
+                "markdown_inline",
+                "yaml"
             },
 
             -- Install parsers synchronously (only applied to `ensure_installed`)

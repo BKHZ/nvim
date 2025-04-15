@@ -4,6 +4,7 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-treesitter/nvim-treesitter",
+        { 'echasnovski/mini.nvim', version = false }
     },
     config = function()
         require("codecompanion").setup {
@@ -15,16 +16,16 @@ return {
                                 -- Always show at top of chat buffer
                                 order = 1,
                                 default = "claude-3.7-sonnet",
-                        choices = {
+                                choices = {
                                     "claude-3.5-sonnet",
                                     "claude-3.7-sonnet",
                                     "claude-3.7-sonnet-thought"
                                 }
                             },
                             -- num_ctx = {
-                            --     default = 50000
-                            -- }
-                        }
+                                --     default = 50000
+                                -- }
+                            }
                     })
                 end
             },
@@ -74,11 +75,11 @@ return {
                 diff = {
                     enabled = true,
                     layout = "vertical",
-                    provider = "default" -- or mini_diff
+                    provider = "mini_diff" -- or "default"
                 },
                 chat = {
                     -- Disable auto response stream scrolling
-                    auto_scroll = false,
+                    auto_scroll = true,
                     intro_message = "How can I help? (Press ? for options)",
                     show_header_separator = false,
                     show_references = true,
@@ -121,8 +122,10 @@ return {
                 }
             }
         }
-    end,
 
-    -- Toggle code companion panel
-    vim.keymap.set("n", "<leader>cc", ":CodeCompanionChat Toggle<cr>", { silent = true, noremap = true })
+        -- Toggle code companion panel
+        vim.keymap.set("n", "<leader>cc", ":CodeCompanionChat Toggle<cr>", { silent = true, noremap = true })
+        -- Auto-expand cc to CodeCompanion
+        vim.cmd([[cab cc CodeCompanion]])
+    end,
 }

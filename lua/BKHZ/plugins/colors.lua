@@ -1,7 +1,90 @@
 return {
     {
-        "rebelot/kanagawa.nvim",
+        "catppuccin/nvim",
         enabled = true,
+        lazy = false,
+        config = function()
+            require("catppuccin").setup {
+                flavour = "mocha",
+                transparent_background = false,
+                show_end_of_buffer = false,
+                term_colors = true,
+                dim_inactive = {
+                    enabled = false,
+                },
+                styles = {
+                    comments = { "italic" },
+                    conditionals = { "italic" },
+                },
+                default_integrations = true,
+                integrations = {
+                    cmp = true,
+                    gitsigns = true,
+                    treesitter = true,
+                    fidget = true,
+                    leap = true,
+                    markdown = true,
+                    mason = true,
+                    neotest = true,
+                    copilot_vim = true,
+                    indent_blankline = {
+                        enabled = true,
+                        colored_indent_levels = false
+                    },
+                    native_lsp = {
+                        enabled = true,
+                        virtual_text = {
+                            errors = { "italic" },
+                            hints = { "italic" },
+                            warnings = { "italic" },
+                            information = { "italic" },
+                            ok = { "italic" },
+                        },
+                        underlines = {
+                            errors = { "underline" },
+                            hints = { "underline" },
+                            warnings = { "underline" },
+                            information = { "underline" },
+                            ok = { "underline" },
+                        },
+                        inlay_hints = {
+                            background = true,
+                        },
+                    },
+                    telescope = {
+                        enabled = true,
+                    },
+                    lsp_trouble = true,
+                    gitgutter = true,
+                    mini = {
+                        enabled = true,
+                        base = true,
+                        statusline = true,
+                    }
+                },
+            }
+
+            vim.cmd.colorscheme("catppuccin")
+        end
+    },
+    {
+        "AlexvZyl/nordic.nvim",
+        enabled = false,
+        lazy = false,
+        config = function()
+            require("nordic").setup {
+                bold_keywords = true,
+                italic_comments = true,
+                bright_border = true,
+                reduced_blue = false
+            }
+
+            vim.cmd.colorscheme("nordic")
+        end
+    },
+    {
+        "rebelot/kanagawa.nvim",
+        enabled = false,
         lazy = false,
         config = function()
             require("kanagawa").setup({
@@ -15,9 +98,9 @@ return {
                 typeStyle = {},
                 dimInactive = false,
                 terminalColors = true,
-                theme = "wave",
+                theme = "dragon",
                 background = {
-                    dark = "wave",
+                    dark = "dragon",
                 },
                 ---@diagnostic disable-next-line: unused-local
                 overrides = function(colors)
@@ -58,7 +141,7 @@ return {
                 },
             })
 
-            vim.cmd("colorscheme kanagawa")
+            vim.cmd.colorscheme("kanagawa")
         end
     },
     {
@@ -98,7 +181,7 @@ return {
                 }
             };
 
-            vim.cmd("colorscheme carbonfox")
+            vim.cmd.colorscheme("carbonfox")
         end
     },
 }
