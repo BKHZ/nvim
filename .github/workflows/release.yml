@@ -38,7 +38,7 @@ jobs:
         run: |
           docker push $DOCKER_IMAGE
       - name: Cleanup old registry containers
-        uses: actions/delete-package-versions@v4
+        uses: actions/delete-package-versions@v5
         with:
           package-name: nvim
           package-type: container
