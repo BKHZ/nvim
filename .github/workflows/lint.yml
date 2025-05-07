@@ -2,6 +2,9 @@
 
 name: Lint
 
+permissions:
+  contents: read
+
 on:
   push:
     branches:
