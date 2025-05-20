@@ -116,7 +116,7 @@ return {
                     -- @param adapter CodeCompanion.Adapter
                     -- @return string
                     ---@diagnostic disable-next-line: unused-local
-                    token_count = function (tokens, adapter)
+                    token_count = function (tokens, _)
                         return " (" .. tokens .. " tokens)"
                     end
                 }

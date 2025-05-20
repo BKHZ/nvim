@@ -52,7 +52,7 @@ return {
 
             -- LSP keymap shortcuts
             -- Only remap keys after language server has attached to current buffer
-            vim.api.nvim_create_autocmd({
+            vim.api.nvim_create_autocmd("LspAttach", {
                 group = vim.api.nvim_create_augroup("UserLspConfig", {}),
                 callback = function (event)
                     local bufmap = function (mode, rhs, lhs)
@@ -74,7 +74,7 @@ return {
                     bufmap("n", "grd", "<cmd>lua vim.lsp.buf.declaration()<cr>")
                     bufmap({ "n", "x" }, "gq", "<cmd>lua vim.lsp.buf.format({async = true})<cr>")
                 end,
-            }, "LspAttach")
+            })
 
             -- Auto format buffer on save with attached LSP client. If the LSP supports organizeImports, it will
             -- tidy the imports before formatting the buffer.
