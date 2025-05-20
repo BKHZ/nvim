@@ -1,13 +1,20 @@
 return {
     "zbirenbaum/copilot.lua",
     enabled = true,
-    cmd = 'Copilot',
-    build = ':Copilot auth',
-    event = 'InsertEnter',
+    cmd = "Copilot",
+    build = ":Copilot auth",
+    event = "InsertEnter",
     dependencies = {
         "zbirenbaum/copilot-cmp",
     },
     opts = {
+        server_opts_overrides = {
+            settings = {
+                telemetry = {
+                    telemetryLevel = "off"
+                }
+            }
+        },
         panel = {
             enabled = false,
         },
@@ -16,11 +23,11 @@ return {
             auto_trigger = false,
             keymap = {
                 accept = false, -- handled by nvim-cmp
-                accept_word = '<M-w>',
-                accept_line = '<M-l>',
-                next = '<M-]>',
-                prev = '<M-[>',
-                dismiss = '/',
+                accept_word = "<M-w>",
+                accept_line = "<M-l>",
+                next = "<M-]>",
+                prev = "<M-[>",
+                dismiss = "/",
             },
         },
         filetypes = {
@@ -36,13 +43,13 @@ return {
             ["."] = false,
         }
     },
-    config = function(_, opts)
-        local cmp = require('cmp')
-        local copilot = require('copilot.suggestion')
-        local luasnip = require('luasnip')
+    config = function (_, opts)
+        local cmp = require("cmp")
+        local copilot = require("copilot.suggestion")
+        local luasnip = require("luasnip")
 
-        require('copilot').setup(opts)
-        require('copilot_cmp').setup {}
+        require("copilot").setup(opts)
+        require("copilot_cmp").setup {}
 
         local function set_trigger(trigger)
             vim.b.copilot_suggestion_auto_trigger = trigger
@@ -50,7 +57,7 @@ return {
         end
 
         -- Hide suggestions when the completion menu is open.
-        cmp.event:on('menu_opened', function()
+        cmp.event:on("menu_opened", function ()
             if copilot.is_visible() then
                 copilot.dismiss()
             end
@@ -58,12 +65,12 @@ return {
         end)
 
         -- Disable suggestions when inside a snippet.
-        cmp.event:on('menu_closed', function()
+        cmp.event:on("menu_closed", function ()
             set_trigger(not luasnip.expand_or_locally_jumpable())
         end)
-        vim.api.nvim_create_autocmd('User', {
-            pattern = { 'LuasnipInsertNodeEnter', 'LuasnipInsertNodeLeave' },
-            callback = function()
+        vim.api.nvim_create_autocmd("User", {
+            pattern = { "LuasnipInsertNodeEnter", "LuasnipInsertNodeLeave" },
+            callback = function ()
                 set_trigger(not luasnip.expand_or_locally_jumpable())
             end,
         })
