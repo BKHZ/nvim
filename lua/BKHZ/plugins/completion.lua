@@ -12,7 +12,6 @@ return {
         -- Completition actions
         -- Requires `diff-so-fancy` to be installed globally.
         "aznhe21/actions-preview.nvim",
-        "nvim-telescope/telescope.nvim",
         -- Luasnip snippets
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
@@ -43,18 +42,18 @@ return {
             highlight_command = {
                 require("actions-preview.highlight").diff_so_fancy(),
             },
-            telescope = vim.tbl_extend(
-                "force",
-                require("telescope.themes").get_dropdown(),
-                {
-                    make_value = nil,
-                    make_make_display = nil,
-                }
-            ),
+            -- telescope = vim.tbl_extend(
+            --     "force",
+            --     require("telescope.themes").get_dropdown(),
+            --     {
+            --         make_value = nil,
+            --         make_make_display = nil,
+            --     }
+            -- ),
         }
 
         -- Code actions popup menu
-        vim.keymap.set({"v", "n"}, "<leader>a", preview.code_actions)
+        vim.keymap.set({ "v", "n" }, "<leader>a", preview.code_actions)
 
         -- LSP kind color formatting groups
         vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#282C34", fg = "NONE" })
@@ -88,9 +87,9 @@ return {
         vim.api.nvim_set_hl(0, "CmpItemKindInterface", { fg = "#D8EEEB", bg = "#58B5A8" })
         vim.api.nvim_set_hl(0, "CmpItemKindColor", { fg = "#D8EEEB", bg = "#58B5A8" })
         vim.api.nvim_set_hl(0, "CmpItemKindTypeParameter", { fg = "#D8EEEB", bg = "#58B5A8" })
-        vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg = "#000000", bg = "#6CC644"})
+        vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#000000", bg = "#6CC644" })
 
-        local has_words_before = function()
+        local has_words_before = function ()
             if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
                 return false
             end
@@ -122,7 +121,7 @@ return {
                     cmp.abort()
                     fallback()
                 end,
-                ["<CR>"] = cmp.mapping(function(fallback)
+                ["<CR>"] = cmp.mapping(function (fallback)
                     if cmp.visible() then
                         if luasnip.expandable() then
                             luasnip.expand()
@@ -135,7 +134,7 @@ return {
                         fallback()
                     end
                 end),
-                ["<Tab>"] = cmp.mapping(function(fallback)
+                ["<Tab>"] = cmp.mapping(function (fallback)
                     if copilot.is_visible() then
                         copilot.accept()
                     elseif cmp.visible() and has_words_before() then
@@ -146,7 +145,7 @@ return {
                         fallback()
                     end
                 end),
-                ["<S-Tab>"] = cmp.mapping(function(fallback)
+                ["<S-Tab>"] = cmp.mapping(function (fallback)
                     if cmp.visible() then
                         cmp.select_prev_item()
                     elseif luasnip.locally_jumpable(-1) then
@@ -159,11 +158,11 @@ return {
 
             sources = cmp.config.sources({
                 -- Copilot sources
-                { name = "Copilot", group_index = 2 },
+                { name = "copilot",  group_index = 2 },
                 -- File paths
                 -- { name = "path" },
                 -- Language server
-                { name = "nvim_lsp", keyword_length = 3, group_index = 2 },
+                { name = "nvim_lsp", keyword_length = 1, group_index = 2 },
                 -- Function signatures
                 -- { name = "nvim_lsp_signature_help" },
                 -- Complete neovims Lua runtime API (vim.lsp.*)
@@ -171,7 +170,7 @@ return {
                 -- Source current buffer
                 -- { name = "buffer", keyword_length = 2 },
                 -- nvim-cmp source for luasnip
-                { name = "luasnip", keyword_length = 2, group_index = 2 },
+                { name = "luasnip",  keyword_length = 2, group_index = 2 },
             }),
 
             window = {
@@ -188,13 +187,13 @@ return {
             formatting = {
                 fields = { "kind", "abbr", "menu" },
                 expandable_indicator = true,
-                format = function(entry, vim_item)
+                format = function (entry, vim_item)
                     local kind = lspkind.cmp_format({
-                        mode = 'symbol_text',
+                        mode = "symbol_text",
                         -- Requires nerd-fonts font
-                        preset = 'default',
+                        preset = "default",
                         maxwidth = 100,
-                        ellipsis_char = '...',
+                        ellipsis_char = "...",
                         show_labelDetails = false,
                         symbol_map = {
                             Copilot = "",

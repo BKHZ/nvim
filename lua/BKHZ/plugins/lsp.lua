@@ -13,10 +13,6 @@ return {
             "j-hui/fidget.nvim",
         },
         config = function ()
-            local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-            local capabilities = has_cmp and cmp_nvim_lsp.default_capabilities() or
-                vim.lsp.protocol.make_client_capabilities()
-
             require("mason").setup {
                 max_concurrent_installers = 4,
                 ui = {
@@ -25,7 +21,6 @@ return {
             }
 
             require("mason-lspconfig").setup {
-                -- Automatically enable language servers when relevant file types are opened.
                 automatic_enable = true,
                 -- These are the language servers that we want automatically installed.
                 ensure_installed = {
@@ -46,8 +41,14 @@ return {
             }
 
             -- Add capabilities to all language servers
+            local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
             vim.lsp.config("*", {
-                capabilities = capabilities
+                capabilities = vim.tbl_deep_extend(
+                    "force",
+                    {},
+                    vim.lsp.protocol.make_client_capabilities(),
+                    has_cmp and cmp_nvim_lsp.default_capabilities() or {}
+                ),
             })
 
             -- LSP keymap shortcuts
@@ -115,5 +116,7 @@ return {
                     end
                 end
             })
+
+            -- vim.lsp.enable("gopls")
         end
     } }

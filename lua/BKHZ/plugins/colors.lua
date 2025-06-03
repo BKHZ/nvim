@@ -3,11 +3,11 @@ return {
         "catppuccin/nvim",
         enabled = true,
         lazy = false,
-        config = function()
+        config = function ()
             require("catppuccin").setup {
                 flavour = "mocha",
                 transparent_background = false,
-                show_end_of_buffer = false,
+                show_end_of_buffer = true,
                 term_colors = true,
                 dim_inactive = {
                     enabled = false,
@@ -71,7 +71,7 @@ return {
         "AlexvZyl/nordic.nvim",
         enabled = false,
         lazy = false,
-        config = function()
+        config = function ()
             require("nordic").setup {
                 bold_keywords = true,
                 italic_comments = true,
@@ -86,7 +86,7 @@ return {
         "rebelot/kanagawa.nvim",
         enabled = false,
         lazy = false,
-        config = function()
+        config = function ()
             require("kanagawa").setup({
                 compile = false,
                 undercurl = true,
@@ -103,26 +103,26 @@ return {
                     dark = "dragon",
                 },
                 ---@diagnostic disable-next-line: unused-local
-                overrides = function(colors)
+                overrides = function (colors)
                     local theme = colors.theme
-                    local makeDiagnosticColor = function(color)
+                    local makeDiagnosticColor = function (color)
                         local c = require("kanagawa.lib.color")
                         return { fg = color, bg = c(color):blend(theme.ui.bg, 0.95):to_hex() }
                     end
 
                     return {
                         -- Transparent floating windows
-                        NormalFloat = { bg = "none" },
-                        FloatBorder = { bg = "none" },
-                        FloatTitle = { bg = "none" },
-                        NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
-                        LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-                        MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+                        NormalFloat                = { bg = "none" },
+                        FloatBorder                = { bg = "none" },
+                        FloatTitle                 = { bg = "none" },
+                        NormalDark                 = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
+                        LazyNormal                 = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+                        MasonNormal                = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
                         -- Dark completion popup menu
-                        Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1, blend = vim.o.pumblend },
-                        PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
-                        PmenuSbar = { bg = theme.ui.bg_m1 },
-                        PmenuThumb = { bg = theme.ui.bg_p2 },
+                        Pmenu                      = { fg = theme.ui.shade0, bg = theme.ui.bg_p1, blend = vim.o.pumblend },
+                        PmenuSel                   = { fg = "NONE", bg = theme.ui.bg_p2 },
+                        PmenuSbar                  = { bg = theme.ui.bg_m1 },
+                        PmenuThumb                 = { bg = theme.ui.bg_p2 },
                         -- Tinted diagnostic backgrounds
                         DiagnosticVirtualTextHint  = makeDiagnosticColor(theme.diag.hint),
                         DiagnosticVirtualTextInfo  = makeDiagnosticColor(theme.diag.info),
@@ -148,7 +148,7 @@ return {
         "EdenEast/nightfox.nvim",
         enabled = false,
         lazy = false,
-        config = function()
+        config = function ()
             require("nightfox").setup {
                 options = {
                     transparent = false,

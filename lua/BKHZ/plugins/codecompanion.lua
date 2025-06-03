@@ -104,7 +104,7 @@ return {
                     },
                     action_pallete = {
                         prompt = "Prompt",
-                        provider = "telescope",
+                        provider = "mini_pick",
                         opts = {
                             show_default_actions = true,
                             show_default_prompt_library = true

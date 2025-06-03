@@ -6,7 +6,7 @@ return {
     },
     {
         "nvim-telescope/telescope.nvim",
-        enabled = true,
+        enabled = false,
         -- branch = "0.1.x",
         dependencies = {
             "nvim-telescope/telescope-ui-select.nvim",
@@ -22,10 +22,8 @@ return {
             local open_with_trouble = require("trouble.sources.telescope").open
 
             telescope.setup {
-                -- Apply ivy theme for all pickers
-                -- https://github.com/nvim-telescope/telescope.nvim/issues/938#issuecomment-877539724
-                defaults = themes.get_ivy {
-                    preview = true,
+                defaults = themes.get_dropdown {
+                    enable_preview = true,
                     hidden = false,
                     initial_mode = "insert",
                     path_display = {
@@ -38,8 +36,8 @@ return {
                     winblend = 10,
                     results_title = "",
                     layout_config = {
-                        width = 1.0,
-                        height = 0.3,
+                        -- width = 0.5,
+                        -- height = 0.3,
                         prompt_position = "top",
                         preview_cutoff = 120,
                         horizontal = {
@@ -71,8 +69,8 @@ return {
                     },
                 },
                 extensions = {
-                    ['ui-select'] = {
-                        require('telescope.themes').get_ivy {}
+                    ["ui-select"] = {
+                        require("telescope.themes").get_ivy {}
                     }
                 },
             }
@@ -83,25 +81,25 @@ return {
             telescope.load_extension("ui-select")
 
             -- File picker
-            vim.keymap.set("n", "<leader>f", function ()
-                builtin.find_files {
-                    hidden = true,
-                    file_ignore_patterns = {
-                        -- VCS source directories
-                        "%.git/",
-                        -- Go packages
-                        "vendor/",
-                        -- JS packages
-                        "node_modules/",
-                        -- Vim files
-                        "*~",
-                        "*.swp",
-                        "*.swo",
-                    },
-                }
-            end, {})
+            -- vim.keymap.set("n", "<leader>f", function ()
+            --     builtin.find_files {
+            --         hidden = true,
+            --         file_ignore_patterns = {
+            --             -- VCS source directories
+            --             "%.git/",
+            --             -- Go packages
+            --             "vendor/",
+            --             -- JS packages
+            --             "node_modules/",
+            --             -- Vim files
+            --             "*~",
+            --             "*.swp",
+            --             "*.swo",
+            --         },
+            --     }
+            -- end, {})
 
-            vim.keymap.set("n", "<C-p>", builtin.git_files, {})
+            -- vim.keymap.set("n", "<C-p>", builtin.git_files, {})
             -- Search file contents (ripgrep)
             vim.keymap.set("n", "<leader>F", builtin.live_grep, {})
 
@@ -119,7 +117,7 @@ return {
             -- Open telescope to neovim configuration directory.
             -- Autocmd must start with upper case letter.
             vim.api.nvim_create_user_command("Config", function ()
-                builtin.find_files({cwd="~/.config/nvim"})
+                builtin.find_files({ cwd = "~/.config/nvim" })
             end, {})
 
             -- LSP keymaps
@@ -128,4 +126,4 @@ return {
             vim.keymap.set("n", "<leader>gD", builtin.lsp_type_definitions)
             vim.keymap.set("n", "<leader>gi", builtin.lsp_implementations)
         end
-    }}
+    } }

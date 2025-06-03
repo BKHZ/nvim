@@ -1,4 +1,7 @@
 return {
+    on_attach = function ()
+        print("gopls LSP attached")
+    end,
     settings = {
         gopls = {
             staticcheck = true,

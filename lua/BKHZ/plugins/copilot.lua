@@ -1,54 +1,55 @@
 return {
     "zbirenbaum/copilot.lua",
     enabled = true,
+    lazy = true,
     cmd = "Copilot",
     build = ":Copilot auth",
-    event = "InsertEnter",
+    event = {
+        "InsertEnter",
+        "LspAttach"
+    },
     dependencies = {
+        "neovim/nvim-lspconfig",
         "zbirenbaum/copilot-cmp",
     },
-    opts = {
-        server_opts_overrides = {
-            settings = {
-                telemetry = {
-                    telemetryLevel = "off"
-                }
-            }
-        },
-        panel = {
-            enabled = false,
-        },
-        suggestion = {
-            enabled = true,
-            auto_trigger = false,
-            keymap = {
-                accept = false, -- handled by nvim-cmp
-                accept_word = "<M-w>",
-                accept_line = "<M-l>",
-                next = "<M-]>",
-                prev = "<M-[>",
-                dismiss = "/",
-            },
-        },
-        filetypes = {
-            yaml = false,
-            markdown = false,
-            help = false,
-            gitcommit = false,
-            gitrebase = false,
-            go = true,
-            typescript = true,
-            rust = true,
-            cpp = true,
-            ["."] = false,
-        }
-    },
-    config = function (_, opts)
+    config = function ()
         local cmp = require("cmp")
         local copilot = require("copilot.suggestion")
         local luasnip = require("luasnip")
 
-        require("copilot").setup(opts)
+        require("copilot").setup {
+            server_opts_overrides = {
+                settings = {
+                    telemetry = {
+                        telemetryLevel = "off"
+                    }
+                }
+            },
+            panel = {
+                enabled = false,
+            },
+            suggestion = {
+                enabled = false,
+                auto_trigger = false,
+                keymap = {
+                    accept = false, -- handled by nvim-cmp
+                    accept_word = "<M-w>",
+                    accept_line = "<M-l>",
+                    next = "<M-]>",
+                    prev = "<M-[>",
+                    dismiss = "/",
+                },
+            },
+            filetypes = {
+                go = true,
+                typescript = true,
+                rust = true,
+                cpp = true,
+                -- Disable for all other file types
+                ["."] = false,
+            }
+        }
+
         require("copilot_cmp").setup {}
 
         local function set_trigger(trigger)
