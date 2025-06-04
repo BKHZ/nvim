@@ -87,7 +87,7 @@ return {
                 dir_opts               = [[/s/b/a:-d]],
                 cwd_prompt             = true,
                 cwd_prompt_shorten_len = 32,
-                hidden                 = true,
+                hidden                 = false,
                 no_ignore              = false
             }
         }
@@ -110,5 +110,8 @@ return {
         vim.api.nvim_create_user_command("Config", function ()
             fzf.files { cwd = "~/.config/nvim" }
         end, {})
+
+        -- Auto-expand ff to FzfLua
+        vim.cmd([[cab ff FzfLua]])
     end
 }
