@@ -11,7 +11,7 @@ Plugins are managed via `lazy.nvim` and will automatically synchronize on nvim l
 ### ArchLinux
 
 > [!NOTE]
-> A patched nerd font is required to correctly display icons in various plugins that rely on `nvim-web-devicons`.
+> A patched nerd font is required to correctly display icons
 
 ```
 $ sudo pacman -S \

@@ -3,7 +3,7 @@ return {
     enabled = true,
     lazy = false,
     dependencies = {
-        "nvim-tree/nvim-web-devicons",
+        "echasnovski/mini.icons",
         "tpope/vim-fugitive",
         "folke/trouble.nvim",
         "folke/lazy.nvim",
@@ -15,9 +15,9 @@ return {
         require("lualine").setup {
             options = {
                 icons_enabled = true,
-                theme = 'catppuccin',
-                component_separators = '',
-                section_separators = '',
+                theme = "catppuccin",
+                component_separators = "",
+                section_separators = "",
                 globalstatus = false,
             },
             sections = {
@@ -28,37 +28,27 @@ return {
                     { "branch" },
                 },
                 lualine_c = {
-                    {
-                        "diagnostics",
-                        sources = { "nvim_lsp" },
-                        colored = true,
-                        always_visible = false,
-                    },
-                    {
-                        "filename",
-                        path = 4,
-                    }
+                    { "diagnostics", sources = { "nvim_lsp" }, colored = true, always_visible = false },
+                    { "filename",    path = 4 }
                 },
                 lualine_x = {
                     { "encoding" },
                     { "fileformat" },
                     { "filetype" },
-                    {
-                        status.updates,
-                        cond = status.has_updates,
-                        color = { fg = "#ff9e64" }
-                    },
+                    { status.updates, cond = status.has_updates, color = { fg = "#ff9e64" } },
                 },
                 lualine_y = {
                     { "progress", separator = " ", padding = { left = 1, right = 1 } }
                 },
                 lualine_z = {
-                    { "location" },
+                    { "location", padding = { left = 0, right = 1 } },
                 }
             },
             extensions = {
                 "fugitive",
                 "trouble",
+                "lazy",
+                "fzf"
             },
         }
     end

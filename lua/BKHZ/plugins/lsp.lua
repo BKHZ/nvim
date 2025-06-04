@@ -116,7 +116,6 @@ return {
                     end
                 end
             })
-
-            -- vim.lsp.enable("gopls")
         end
-    } }
+    }
+}

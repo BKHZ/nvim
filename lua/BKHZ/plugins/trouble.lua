@@ -2,7 +2,7 @@ return {
     "folke/trouble.nvim",
     enabled = true,
     dependencies = {
-        "nvim-tree/nvim-web-devicons",
+        "echasnovski/mini.icons"
     },
     opts = {},
     config = function ()

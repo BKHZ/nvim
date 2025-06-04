@@ -32,7 +32,6 @@ return {
                     sorting_strategy = "ascending",
                     selection_strategy = "reset",
                     scroll_strategy = "limit",
-                    color_devicons = true,
                     winblend = 10,
                     results_title = "",
                     layout_config = {

@@ -2,7 +2,7 @@ return {
     "stevearc/oil.nvim",
     enabled = true,
     dependencies = {
-        "nvim-tree/nvim-web-devicons",
+        "echasnovski/mini.icons"
     },
     config = function ()
         require("oil").setup {

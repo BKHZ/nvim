@@ -2,6 +2,10 @@ return {
     "nvim-treesitter/nvim-treesitter",
     enabled = true,
     build = ":TSUpdate",
+    event = {
+        "VeryLazy"
+    },
+    cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
     config = function ()
         ---@diagnostic disable-next-line: missing-fields
         require("nvim-treesitter.configs").setup({
@@ -67,6 +71,16 @@ return {
                 -- Instead of true it can also be a list of languages
                 additional_vim_regex_highlighting = false,
             },
+
+            incremental_selection = {
+                enable = true,
+                keymaps = {
+                    init_selection = "<C-space>",
+                    node_incremental = "<C-space>",
+                    scope_incremental = false,
+                    node_decremental = "<bs>"
+                }
+            }
         })
 
         local treesitter_parser_config = require("nvim-treesitter.parsers").get_parser_configs()
