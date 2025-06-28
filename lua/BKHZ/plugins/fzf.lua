@@ -76,19 +76,19 @@ return {
                 pager = [[delta --width=$COLUMNS --hunk-header-style="omit" --file-style="omit"]]
             },
             files = {
+                fd_opts                = [[--color=never --hidden --type f --type l --exclude .git]],
                 git_icons              = true,
                 file_icons             = "mini",
                 color_icons            = true,
                 formatter              = "path.filename_first",
-                cmd                    = "rg --files",
-                find_opts              = [[-type f \! -path '*/.git/*']],
-                rg_opts                = [[--color=never --hidden --files -g "!.git"]],
-                fd_opts                = [[--color=never --hidden --type f --type l --exclude .git]],
-                dir_opts               = [[/s/b/a:-d]],
                 cwd_prompt             = true,
                 cwd_prompt_shorten_len = 32,
-                hidden                 = false,
+                hidden                 = true,
                 no_ignore              = false
+            },
+            grep = {
+                rg_opts = [[--vimgrep --column --line-number --smart-case --hidden --glob '!.git/']],
+                hidden  = true,
             }
         }
 

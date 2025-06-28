@@ -20,6 +20,7 @@ $ sudo pacman -S \
 	unzip \
 	tar \
 	gzip \
+	fd \
 	neovim \
 	neovim-lspconfig \
 	diff-so-fancy \
